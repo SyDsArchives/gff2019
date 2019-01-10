@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\GFF.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{19F37A17-337D-40C6-B257-EDF028312993}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\GFF.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\GFFEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <Filter Include="Config">
+      <UniqueIdentifier>{27329A21-E8C1-4059-9141-E54C0D3C8E0F}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\GFF">
+      <UniqueIdentifier>{1BF1BF9F-0B9B-4D7A-B372-14C291138FC2}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\GFF\GFF.Build.cs">
+      <Filter>Source\GFF</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\GFF\GFF.cpp">
+      <Filter>Source\GFF</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\GFF\GFF.h">
+      <Filter>Source\GFF</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\GFF\GFFCharacter.cpp">
+      <Filter>Source\GFF</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\GFF\GFFCharacter.h">
+      <Filter>Source\GFF</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\GFF\GFFGameMode.cpp">
+      <Filter>Source\GFF</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\GFF\GFFGameMode.h">
+      <Filter>Source\GFF</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Source\GFF\MyCharacter.h">
+      <Filter>Source\GFF</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\GFF\MyEnemy.h">
+      <Filter>Source\GFF</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Source\GFF\MyCharacter.cpp">
+      <Filter>Source\GFF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\GFF\MyEnemy.cpp">
+      <Filter>Source\GFF</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
