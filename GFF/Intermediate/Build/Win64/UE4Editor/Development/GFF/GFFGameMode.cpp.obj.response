@@ -412,21 +412,21 @@
 /I ThirdParty
 /I ThirdParty\libSampleRate\Public
 /I ThirdParty\libSampleRate
-/I D:\UnrealEngine\GFF\Intermediate\Build\Win64\UE4Editor\Inc\GFF
-/I D:\UnrealEngine\GFF\Source
-/I D:\UnrealEngine\GFF\Source\GFF
+/I D:\UnrealEngine\gff2019\GFF\Intermediate\Build\Win64\UE4Editor\Inc\GFF
+/I D:\UnrealEngine\gff2019\GFF\Source
+/I D:\UnrealEngine\gff2019\GFF\Source\GFF
 /I "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\INCLUDE"
 /I "C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\ucrt"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\shared"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\um"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\winrt"
-/FI"D:\UnrealEngine\GFF\Intermediate\Build\Win64\GFFEditor\Development\Engine\SharedPCH.Engine.h"
-/Yu"D:\UnrealEngine\GFF\Intermediate\Build\Win64\GFFEditor\Development\Engine\SharedPCH.Engine.h"
-/Fp"D:\UnrealEngine\GFF\Intermediate\Build\Win64\GFFEditor\Development\Engine\SharedPCH.Engine.h.pch"
-"D:\UnrealEngine\GFF\Source\GFF\GFFGameMode.cpp"
-/FI"D:\UnrealEngine\GFF\Intermediate\Build\Win64\UE4Editor\Development\GFF\Definitions.GFF.h"
-/Fo"D:\UnrealEngine\GFF\Intermediate\Build\Win64\UE4Editor\Development\GFF\GFFGameMode.cpp.obj"
+/FI"D:\UnrealEngine\gff2019\GFF\Intermediate\Build\Win64\GFFEditor\Development\Engine\SharedPCH.Engine.h"
+/Yu"D:\UnrealEngine\gff2019\GFF\Intermediate\Build\Win64\GFFEditor\Development\Engine\SharedPCH.Engine.h"
+/Fp"D:\UnrealEngine\gff2019\GFF\Intermediate\Build\Win64\GFFEditor\Development\Engine\SharedPCH.Engine.h.pch"
+"D:\UnrealEngine\gff2019\GFF\Source\GFF\GFFGameMode.cpp"
+/FI"D:\UnrealEngine\gff2019\GFF\Intermediate\Build\Win64\UE4Editor\Development\GFF\Definitions.GFF.h"
+/Fo"D:\UnrealEngine\gff2019\GFF\Intermediate\Build\Win64\UE4Editor\Development\GFF\GFFGameMode.cpp.obj"
 /TP
 /GR-
 /W4
