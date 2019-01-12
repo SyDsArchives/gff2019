@@ -63,8 +63,13 @@ Plugins/*/Intermediate/*
 # Cache files for the editor to use
 DerivedDataCache/*
 
-#ƒAƒZƒbƒg‚ð–³Ž‹‚·‚é
+#ï¿½Aï¿½Zï¿½bï¿½gï¿½ð–³Žï¿½ï¿½ï¿½ï¿½ï¿½
 Assets/
 
-#ipch‚ð–³Ž‹
+#ipchï¿½ð–³Žï¿½
 *.ipch
+
+Saved/
+
+#log
+*.log
