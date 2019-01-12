@@ -70,6 +70,7 @@ Assets/
 *.ipch
 
 Saved/
+Autosaves/
 
 #log
 *.log
