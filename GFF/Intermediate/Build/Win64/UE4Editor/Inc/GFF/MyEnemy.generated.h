@@ -13,8 +13,46 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define GFF_MyEnemy_generated_h
 
-#define GFF_Source_GFF_MyEnemy_h_12_RPC_WRAPPERS
-#define GFF_Source_GFF_MyEnemy_h_12_RPC_WRAPPERS_NO_PURE_DECLS
+#define GFF_Source_GFF_MyEnemy_h_12_RPC_WRAPPERS \
+ \
+	DECLARE_FUNCTION(execSetisFound) \
+	{ \
+		P_GET_UBOOL(Z_Param_flag); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->SetisFound(Z_Param_flag); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execGetisFound) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(bool*)Z_Param__Result=P_THIS->GetisFound(); \
+		P_NATIVE_END; \
+	}
+
+
+#define GFF_Source_GFF_MyEnemy_h_12_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execSetisFound) \
+	{ \
+		P_GET_UBOOL(Z_Param_flag); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->SetisFound(Z_Param_flag); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execGetisFound) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(bool*)Z_Param__Result=P_THIS->GetisFound(); \
+		P_NATIVE_END; \
+	}
+
+
 #define GFF_Source_GFF_MyEnemy_h_12_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAMyEnemy(); \

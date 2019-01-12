@@ -10,9 +10,14 @@
 #include "Runtime/Engine/Public/EngineUtils.h"
 #include "Runtime/Engine/Classes/Engine/StaticMeshActor.h"//staticMesh
 #include "Runtime/Engine/Classes/Components/BoxComponent.h"//BoxCollisionComponent
+
 #include "MyEnemy.h"
 
+#include "EngineGlobals.h"//ÉçÉOèoóÕ
+#include "Runtime/Engine/Classes/Engine/Engine.h"//ìØè„
+
 #include "Runtime/Engine/Classes/Kismet/KismetSystemLibrary.h"
+
 // Sets default values
 AMyCharacter::AMyCharacter():attackflag(false),MaxWalkSpeed(10000), defaultWalkSpeed(500)
 {
@@ -41,13 +46,25 @@ AMyCharacter::AMyCharacter():attackflag(false),MaxWalkSpeed(10000), defaultWalkS
 	SideViewCameraComponent->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
 	SideViewCameraComponent->bUsePawnControlRotation = false; // We don't want the controller rotating the camera
 
+	//çıìGópÇÃBoxCollisionÇÃê›íË
 	EnemySearch = CreateDefaultSubobject<UBoxComponent>(TEXT("EnemySearch"));
-	EnemySearch->InitBoxExtent(FVector(590.f,230.f,90.f));
+	EnemySearch->InitBoxExtent(FVector(590.f, 230 ,90.f));
+	EnemySearch->bDynamicObstacle = true;
+	EnemySearch->SetupAttachment(GetRootComponent());
+	EnemySearch->BodyInstance.SetCollisionProfileName("MyCollisionProfile");
 	EnemySearch->SetHiddenInGame(false);
+	EnemySearch->SetGenerateOverlapEvents(true);
+	//BoxCollisionComponentÇ…ÉRÅ[ÉãÉoÉbÉNä÷êîÇìoò^
+	FScriptDelegate DelegateBegin;
+	DelegateBegin.BindUFunction(this, "OnTestOverlapBegin");
+	EnemySearch->OnComponentBeginOverlap.Add(DelegateBegin);
+	FScriptDelegate DelegateEnd;
+	DelegateEnd.BindUFunction(this, "OnTestOverlapEnd");
+	EnemySearch->OnComponentEndOverlap.Add(DelegateEnd);
 	
 	//CharacterMovementÇÃê›íË
-	GetCharacterMovement()->bOrientRotationToMovement = true; // Face in the direction we are moving..
-	GetCharacterMovement()->RotationRate = FRotator(0.0f, 720.0f, 0.0f); // ...at this rotation rate
+	GetCharacterMovement()->bOrientRotationToMovement = true;
+	GetCharacterMovement()->RotationRate = FRotator(0.0f, 720.0f, 0.0f);
 	GetCharacterMovement()->GravityScale = 2.f;
 	GetCharacterMovement()->AirControl = 0.80f;
 	GetCharacterMovement()->JumpZVelocity = 1000.f;
@@ -56,16 +73,19 @@ AMyCharacter::AMyCharacter():attackflag(false),MaxWalkSpeed(10000), defaultWalkS
 	GetCharacterMovement()->MaxFlySpeed = 600.f;
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
-	// are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++)
-	
-	Testflag = false;
-	Hit = false;
+	// are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++
+
+	ishit = false;//âºÇ≈ìGÇÃìñÇΩÇËîªíËÇéÊìæ
+
+	enemyDistance = -1.f;
+	enemyNum = 0;
 }
 
 // Called when the game starts or when spawned
 void AMyCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+	EnemyLocation = this->GetActorLocation();
 }
 
 // Called every frame
@@ -73,7 +93,47 @@ void AMyCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	FVector playerLocation(this->GetActorLocation().X, this->GetActorLocation().Y, this->GetActorLocation().Z);
-	EnemySearch->SetWorldLocationAndRotation(playerLocation,this->GetActorRotation());
+
+	for (TActorIterator<AMyEnemy> it(GetWorld()); it; ++it)
+	{
+		if (enemyNum >= 2)
+		{
+			continue;
+		}
+
+		AMyEnemy* TargetEnemy = *it;
+
+		float vecBetweenDistance = FVector::Dist(TargetEnemy->GetActorLocation(), this->GetActorLocation());
+
+		if (vecBetweenDistance < enemyDistance || enemyDistance == -1.f)
+		{
+			enemyDistance = vecBetweenDistance;
+			EnemyLocation = TargetEnemy->GetActorLocation();
+		}
+	}
+}
+
+void AMyCharacter::OnTestOverlapBegin(AActor* OtherActor, UPrimitiveComponent * OtherComponent, int32 OtherBodyIndex, bool bFromSweep, FHitResult & SweepResult)
+{
+	if (OtherActor->ActorHasTag("Enemy"))
+	{
+		++enemyNum;
+	}
+}
+
+void AMyCharacter::OnTestOverlapEnd(AActor * OtherActor, UPrimitiveComponent * OtherComponent, int32 OtherBodyIndex)
+{
+	if (OtherActor->ActorHasTag("Enemy"))
+	{
+		--enemyNum;
+	}
+
+	if (enemyNum == 0)
+	{
+		EnemyLocation = this->GetActorLocation();
+		enemyDistance = -1;
+	}
+	
 }
 
 bool AMyCharacter::GetIsAttack()
@@ -118,37 +178,24 @@ void AMyCharacter::Attack(float val)
 		attackflag = false;
 	}
 
-	if (attackflag)
+	//tagÇégÇ¡ÇƒìGÇíTÇ∑
+	if(enemyNum != 0 && attackflag)
 	{
-		//tagÇégÇ¡ÇƒìGÇíTÇ∑
+		FVector playerVec = this->GetActorLocation();
+				
+		FVector vec = EnemyLocation - playerVec;
 
-		for (TActorIterator<AMyEnemy> it(GetWorld()); it; ++it)
+		if (!ishit)
 		{
-			AMyEnemy* TargetEnemy = *it;
-
-			
-			//if (TargetEnemy->ActorHasTag(FName("Enemy")))
-			//{
-			//	FVector enemyVec = TargetEnemy->GetActorLocation();
-			//	FVector playerVec = this->GetActorLocation();
-
-			//	FVector vec = enemyVec - playerVec;
-
-			//	FVector l(enemyVec.X, enemyVec.Y + 300, playerVec.Z);
-
-			//	if (!Hit)
-			//	{
-			//		GetCharacterMovement()->MaxWalkSpeed = MaxWalkSpeed;
-			//	}
-			//	else
-			//	{
-			//		GetCharacterMovement()->MaxWalkSpeed = defaultWalkSpeed;
-			//	}
-
-			//	AddMovementInput(vec, 1);
-			//}
+			GetCharacterMovement()->MaxWalkSpeed = MaxWalkSpeed;
 		}
+		else
+		{
+			GetCharacterMovement()->MaxWalkSpeed = defaultWalkSpeed;
+		}
+
+		AddMovementInput(vec, 1);
+
 	}
-	
 }
 

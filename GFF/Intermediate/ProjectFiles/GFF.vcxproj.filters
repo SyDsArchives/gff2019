@@ -53,6 +53,7 @@
     <ClInclude Include="..\..\Source\GFF\GFFGameMode.h">
       <Filter>Source\GFF</Filter>
     </ClInclude>
+    <None Include="cpp.hint" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\GFF\MyCharacter.h">

@@ -2,10 +2,12 @@
 
 #pragma once
 
+#include <vector>
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "MyCharacter.generated.h"
 
+struct FVector;
 UCLASS(config = Game)
 class GFF_API AMyCharacter : public ACharacter
 {
@@ -21,6 +23,8 @@ class GFF_API AMyCharacter : public ACharacter
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Attack, meta = (AllowPrivateAccess = "true"))
 	class UBoxComponent* EnemySearch;
+
+	FVector EnemyLocation;
 
 protected:
 
@@ -40,16 +44,19 @@ protected:
 		bool attackflag;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		bool Testflag;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		float MaxWalkSpeed;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		float defaultWalkSpeed;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		bool Hit;
+		bool ishit;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float enemyDistance;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		int enemyNum;
 
 public:	
 
@@ -61,6 +68,12 @@ public:
 	FORCEINLINE class UCameraComponent* GetSideViewCameraComponent() const { return SideViewCameraComponent; }
 	/** Returns CameraBoom subobject **/
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
+
+	UFUNCTION(BlueprintCallable, Category = "MyBPLibrary")
+	void OnTestOverlapBegin(class AActor* OtherActor, class UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex, bool bFromSweep, FHitResult& SweepResult);
+
+	UFUNCTION(BlueprintCallable, Category = "MyBPLibrary")
+	void OnTestOverlapEnd(class AActor* OtherActor, class UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex);
 
 	UFUNCTION(BlueprintCallable, Category = "MyBPLibrary")
 	bool GetIsAttack();

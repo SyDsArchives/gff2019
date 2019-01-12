@@ -19,8 +19,8 @@ void EmptyLinkFunctionForGeneratedCodeGFF_init() {}
 			static const UE4CodeGen_Private::FPackageParams PackageParams = {
 				"/Script/GFF",
 				PKG_CompiledIn | 0x00000000,
-				0x70AA9BEA,
-				0x28A435C1,
+				0x02EFE74B,
+				0xEEC55997,
 				nullptr, 0,
 				METADATA_PARAMS(nullptr, 0)
 			};

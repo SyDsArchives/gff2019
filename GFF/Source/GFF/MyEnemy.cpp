@@ -3,7 +3,7 @@
 #include "MyEnemy.h"
 
 // Sets default values
-AMyEnemy::AMyEnemy()
+AMyEnemy::AMyEnemy():isFound(false)
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -29,5 +29,15 @@ void AMyEnemy::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+}
+
+bool AMyEnemy::GetisFound()
+{
+	return isFound;
+}
+
+void AMyEnemy::SetisFound(bool flag)
+{
+	isFound = flag;
 }
 
