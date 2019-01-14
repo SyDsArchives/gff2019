@@ -8,9 +8,8 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-class UPrimitiveComponent;
 class AActor;
-struct FVector;
+class UPrimitiveComponent;
 struct FHitResult;
 #ifdef GFF_MyCharacter_generated_h
 #error "MyCharacter.generated.h already included, missing '#pragma once' in MyCharacter.h"
@@ -19,24 +18,19 @@ struct FHitResult;
 
 #define GFF_Source_GFF_MyCharacter_h_14_RPC_WRAPPERS \
  \
+	DECLARE_FUNCTION(execGetIsHit) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(bool*)Z_Param__Result=P_THIS->GetIsHit(); \
+		P_NATIVE_END; \
+	} \
+ \
 	DECLARE_FUNCTION(execGetIsAttack) \
 	{ \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
 		*(bool*)Z_Param__Result=P_THIS->GetIsAttack(); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execOnTestHit) \
-	{ \
-		P_GET_OBJECT(UPrimitiveComponent,Z_Param_HitComponent); \
-		P_GET_OBJECT(AActor,Z_Param_OtherActor); \
-		P_GET_OBJECT(UPrimitiveComponent,Z_Param_OtherComponent); \
-		P_GET_STRUCT(FVector,Z_Param_NormalImpulse); \
-		P_GET_STRUCT_REF(FHitResult,Z_Param_Out_Hit); \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		P_THIS->OnTestHit(Z_Param_HitComponent,Z_Param_OtherActor,Z_Param_OtherComponent,Z_Param_NormalImpulse,Z_Param_Out_Hit); \
 		P_NATIVE_END; \
 	} \
  \
@@ -67,24 +61,19 @@ struct FHitResult;
 
 #define GFF_Source_GFF_MyCharacter_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
  \
+	DECLARE_FUNCTION(execGetIsHit) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(bool*)Z_Param__Result=P_THIS->GetIsHit(); \
+		P_NATIVE_END; \
+	} \
+ \
 	DECLARE_FUNCTION(execGetIsAttack) \
 	{ \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
 		*(bool*)Z_Param__Result=P_THIS->GetIsAttack(); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execOnTestHit) \
-	{ \
-		P_GET_OBJECT(UPrimitiveComponent,Z_Param_HitComponent); \
-		P_GET_OBJECT(AActor,Z_Param_OtherActor); \
-		P_GET_OBJECT(UPrimitiveComponent,Z_Param_OtherComponent); \
-		P_GET_STRUCT(FVector,Z_Param_NormalImpulse); \
-		P_GET_STRUCT_REF(FHitResult,Z_Param_Out_Hit); \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		P_THIS->OnTestHit(Z_Param_HitComponent,Z_Param_OtherActor,Z_Param_OtherComponent,Z_Param_NormalImpulse,Z_Param_Out_Hit); \
 		P_NATIVE_END; \
 	} \
  \
@@ -163,10 +152,8 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AMyCharacter); \
 	FORCEINLINE static uint32 __PPO__MaxWalkSpeed() { return STRUCT_OFFSET(AMyCharacter, MaxWalkSpeed); } \
 	FORCEINLINE static uint32 __PPO__defaultWalkSpeed() { return STRUCT_OFFSET(AMyCharacter, defaultWalkSpeed); } \
 	FORCEINLINE static uint32 __PPO__ishit() { return STRUCT_OFFSET(AMyCharacter, ishit); } \
-	FORCEINLINE static uint32 __PPO__test() { return STRUCT_OFFSET(AMyCharacter, test); } \
 	FORCEINLINE static uint32 __PPO__enemyDistance() { return STRUCT_OFFSET(AMyCharacter, enemyDistance); } \
-	FORCEINLINE static uint32 __PPO__enemyNum() { return STRUCT_OFFSET(AMyCharacter, enemyNum); } \
-	FORCEINLINE static uint32 __PPO__num() { return STRUCT_OFFSET(AMyCharacter, num); }
+	FORCEINLINE static uint32 __PPO__enemyNum() { return STRUCT_OFFSET(AMyCharacter, enemyNum); }
 
 
 #define GFF_Source_GFF_MyCharacter_h_11_PROLOG

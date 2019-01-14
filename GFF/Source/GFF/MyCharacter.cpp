@@ -10,6 +10,7 @@
 #include "Runtime/Engine/Public/EngineUtils.h"
 #include "Runtime/Engine/Classes/Engine/StaticMeshActor.h"//staticMesh
 #include "Runtime/Engine/Classes/Components/BoxComponent.h"//BoxCollisionComponent
+#include "Runtime/Engine/Classes/Components/StaticMeshComponent.h"
 
 #include "MyEnemy.h"
 
@@ -48,7 +49,7 @@ AMyCharacter::AMyCharacter():attackflag(false),MaxWalkSpeed(10000), defaultWalkS
 
 	//çıìGópÇÃBoxCollisionÇÃê›íË
 	EnemySearch = CreateDefaultSubobject<UBoxComponent>(TEXT("EnemySearch"));
-	EnemySearch->InitBoxExtent(FVector(590.f, 230 ,90.f));
+	EnemySearch->InitBoxExtent(FVector(300.f, 230 ,90.f));
 	EnemySearch->bDynamicObstacle = true;
 	EnemySearch->SetupAttachment(GetRootComponent());
 	EnemySearch->BodyInstance.SetCollisionProfileName("MyCollisionProfile");
@@ -61,6 +62,10 @@ AMyCharacter::AMyCharacter():attackflag(false),MaxWalkSpeed(10000), defaultWalkS
 	FScriptDelegate DelegateEnd;
 	DelegateEnd.BindUFunction(this, "OnTestOverlapEnd");
 	EnemySearch->OnComponentEndOverlap.Add(DelegateEnd);
+
+	//DummyBlade = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("DummyBlade"));
+	//DummyBlade->SetupAttachment(GetRootComponent());
+	//DummyBlade->SetWorldTransform(FTransform(FRotator(0.f,0.f,0.f),FVector(130.f,90.f,30.f),FVector(2.0f,0.1f,0.1f)));
 	
 	//CharacterMovementÇÃê›íË
 	GetCharacterMovement()->bOrientRotationToMovement = true;
@@ -141,6 +146,11 @@ bool AMyCharacter::GetIsAttack()
 	return attackflag;
 }
 
+bool AMyCharacter::GetIsHit()
+{
+	return ishit;
+}
+
 // Called to bind functionality to input
 void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
@@ -168,34 +178,37 @@ void AMyCharacter::MoveUpDown(float Val)
 
 void AMyCharacter::Attack(float val)
 {
-	if (val == 1.0f)
+	float AttackSpeed = -3.f;
+	if (val >= 0.1f)
 	{
 		attackflag = true;
+		//DummyBlade->AddLocalOffset(FVector(0, AttackSpeed, 0));
+		
+		if (enemyNum != 0)
+		{
+			FVector playerVec = this->GetActorLocation();
+
+			FVector vec = EnemyLocation - playerVec;
+
+			if (!ishit)
+			{
+				GetCharacterMovement()->MaxWalkSpeed = MaxWalkSpeed;
+			}
+			else
+			{
+				GetCharacterMovement()->MaxWalkSpeed = defaultWalkSpeed;
+			}
+
+			AddMovementInput(vec, 1);
+
+		}
+		
 	}
 	else
 	{
 		GetCharacterMovement()->MaxWalkSpeed = defaultWalkSpeed;
 		attackflag = false;
-	}
-
-	//tagÇégÇ¡ÇƒìGÇíTÇ∑
-	if(enemyNum != 0 && attackflag)
-	{
-		FVector playerVec = this->GetActorLocation();
-				
-		FVector vec = EnemyLocation - playerVec;
-
-		if (!ishit)
-		{
-			GetCharacterMovement()->MaxWalkSpeed = MaxWalkSpeed;
-		}
-		else
-		{
-			GetCharacterMovement()->MaxWalkSpeed = defaultWalkSpeed;
-		}
-
-		AddMovementInput(vec, 1);
-
+		ishit = false;
 	}
 }
 

@@ -18,12 +18,11 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 	ENGINE_API UClass* Z_Construct_UClass_ACharacter();
 	UPackage* Z_Construct_UPackage__Script_GFF();
 	GFF_API UFunction* Z_Construct_UFunction_AMyCharacter_GetIsAttack();
-	GFF_API UFunction* Z_Construct_UFunction_AMyCharacter_OnTestHit();
+	GFF_API UFunction* Z_Construct_UFunction_AMyCharacter_GetIsHit();
+	GFF_API UFunction* Z_Construct_UFunction_AMyCharacter_OnTestOverlapBegin();
 	ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FHitResult();
-	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 	ENGINE_API UClass* Z_Construct_UClass_UPrimitiveComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_AActor_NoRegister();
-	GFF_API UFunction* Z_Construct_UFunction_AMyCharacter_OnTestOverlapBegin();
 	GFF_API UFunction* Z_Construct_UFunction_AMyCharacter_OnTestOverlapEnd();
 	ENGINE_API UClass* Z_Construct_UClass_UBoxComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_USpringArmComponent_NoRegister();
@@ -34,7 +33,7 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 		UClass* Class = AMyCharacter::StaticClass();
 		static const FNameNativePtrPair Funcs[] = {
 			{ "GetIsAttack", &AMyCharacter::execGetIsAttack },
-			{ "OnTestHit", &AMyCharacter::execOnTestHit },
+			{ "GetIsHit", &AMyCharacter::execGetIsHit },
 			{ "OnTestOverlapBegin", &AMyCharacter::execOnTestOverlapBegin },
 			{ "OnTestOverlapEnd", &AMyCharacter::execOnTestOverlapEnd },
 		};
@@ -78,76 +77,41 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 		}
 		return ReturnFunction;
 	}
-	struct Z_Construct_UFunction_AMyCharacter_OnTestHit_Statics
+	struct Z_Construct_UFunction_AMyCharacter_GetIsHit_Statics
 	{
-		struct MyCharacter_eventOnTestHit_Parms
+		struct MyCharacter_eventGetIsHit_Parms
 		{
-			UPrimitiveComponent* HitComponent;
-			AActor* OtherActor;
-			UPrimitiveComponent* OtherComponent;
-			FVector NormalImpulse;
-			FHitResult Hit;
+			bool ReturnValue;
 		};
-#if WITH_METADATA
-		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Hit_MetaData[];
-#endif
-		static const UE4CodeGen_Private::FStructPropertyParams NewProp_Hit;
-		static const UE4CodeGen_Private::FStructPropertyParams NewProp_NormalImpulse;
-#if WITH_METADATA
-		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_OtherComponent_MetaData[];
-#endif
-		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_OtherComponent;
-		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_OtherActor;
-#if WITH_METADATA
-		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_HitComponent_MetaData[];
-#endif
-		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_HitComponent;
+		static void NewProp_ReturnValue_SetBit(void* Obj);
+		static const UE4CodeGen_Private::FBoolPropertyParams NewProp_ReturnValue;
 		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
 #endif
 		static const UE4CodeGen_Private::FFunctionParams FuncParams;
 	};
-#if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AMyCharacter_OnTestHit_Statics::NewProp_Hit_MetaData[] = {
-		{ "NativeConst", "" },
-	};
-#endif
-	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UFunction_AMyCharacter_OnTestHit_Statics::NewProp_Hit = { UE4CodeGen_Private::EPropertyClass::Struct, "Hit", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0010008008000182, 1, nullptr, STRUCT_OFFSET(MyCharacter_eventOnTestHit_Parms, Hit), Z_Construct_UScriptStruct_FHitResult, METADATA_PARAMS(Z_Construct_UFunction_AMyCharacter_OnTestHit_Statics::NewProp_Hit_MetaData, ARRAY_COUNT(Z_Construct_UFunction_AMyCharacter_OnTestHit_Statics::NewProp_Hit_MetaData)) };
-	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UFunction_AMyCharacter_OnTestHit_Statics::NewProp_NormalImpulse = { UE4CodeGen_Private::EPropertyClass::Struct, "NormalImpulse", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0010000000000080, 1, nullptr, STRUCT_OFFSET(MyCharacter_eventOnTestHit_Parms, NormalImpulse), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(nullptr, 0) };
-#if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AMyCharacter_OnTestHit_Statics::NewProp_OtherComponent_MetaData[] = {
-		{ "EditInline", "true" },
-	};
-#endif
-	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_AMyCharacter_OnTestHit_Statics::NewProp_OtherComponent = { UE4CodeGen_Private::EPropertyClass::Object, "OtherComponent", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0010000000080080, 1, nullptr, STRUCT_OFFSET(MyCharacter_eventOnTestHit_Parms, OtherComponent), Z_Construct_UClass_UPrimitiveComponent_NoRegister, METADATA_PARAMS(Z_Construct_UFunction_AMyCharacter_OnTestHit_Statics::NewProp_OtherComponent_MetaData, ARRAY_COUNT(Z_Construct_UFunction_AMyCharacter_OnTestHit_Statics::NewProp_OtherComponent_MetaData)) };
-	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_AMyCharacter_OnTestHit_Statics::NewProp_OtherActor = { UE4CodeGen_Private::EPropertyClass::Object, "OtherActor", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0010000000000080, 1, nullptr, STRUCT_OFFSET(MyCharacter_eventOnTestHit_Parms, OtherActor), Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(nullptr, 0) };
-#if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AMyCharacter_OnTestHit_Statics::NewProp_HitComponent_MetaData[] = {
-		{ "EditInline", "true" },
-	};
-#endif
-	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_AMyCharacter_OnTestHit_Statics::NewProp_HitComponent = { UE4CodeGen_Private::EPropertyClass::Object, "HitComponent", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0010000000080080, 1, nullptr, STRUCT_OFFSET(MyCharacter_eventOnTestHit_Parms, HitComponent), Z_Construct_UClass_UPrimitiveComponent_NoRegister, METADATA_PARAMS(Z_Construct_UFunction_AMyCharacter_OnTestHit_Statics::NewProp_HitComponent_MetaData, ARRAY_COUNT(Z_Construct_UFunction_AMyCharacter_OnTestHit_Statics::NewProp_HitComponent_MetaData)) };
-	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AMyCharacter_OnTestHit_Statics::PropPointers[] = {
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AMyCharacter_OnTestHit_Statics::NewProp_Hit,
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AMyCharacter_OnTestHit_Statics::NewProp_NormalImpulse,
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AMyCharacter_OnTestHit_Statics::NewProp_OtherComponent,
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AMyCharacter_OnTestHit_Statics::NewProp_OtherActor,
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AMyCharacter_OnTestHit_Statics::NewProp_HitComponent,
+	void Z_Construct_UFunction_AMyCharacter_GetIsHit_Statics::NewProp_ReturnValue_SetBit(void* Obj)
+	{
+		((MyCharacter_eventGetIsHit_Parms*)Obj)->ReturnValue = 1;
+	}
+	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_AMyCharacter_GetIsHit_Statics::NewProp_ReturnValue = { UE4CodeGen_Private::EPropertyClass::Bool, "ReturnValue", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0010000000000580, 1, nullptr, sizeof(bool), UE4CodeGen_Private::ENativeBool::Native, sizeof(MyCharacter_eventGetIsHit_Parms), &Z_Construct_UFunction_AMyCharacter_GetIsHit_Statics::NewProp_ReturnValue_SetBit, METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AMyCharacter_GetIsHit_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AMyCharacter_GetIsHit_Statics::NewProp_ReturnValue,
 	};
 #if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AMyCharacter_OnTestHit_Statics::Function_MetaDataParams[] = {
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AMyCharacter_GetIsHit_Statics::Function_MetaDataParams[] = {
 		{ "Category", "MyBPLibrary" },
 		{ "ModuleRelativePath", "MyCharacter.h" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AMyCharacter_OnTestHit_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AMyCharacter, "OnTestHit", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x04C20401, sizeof(MyCharacter_eventOnTestHit_Parms), Z_Construct_UFunction_AMyCharacter_OnTestHit_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_AMyCharacter_OnTestHit_Statics::PropPointers), 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AMyCharacter_OnTestHit_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_AMyCharacter_OnTestHit_Statics::Function_MetaDataParams)) };
-	UFunction* Z_Construct_UFunction_AMyCharacter_OnTestHit()
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AMyCharacter_GetIsHit_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AMyCharacter, "GetIsHit", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x04020401, sizeof(MyCharacter_eventGetIsHit_Parms), Z_Construct_UFunction_AMyCharacter_GetIsHit_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_AMyCharacter_GetIsHit_Statics::PropPointers), 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AMyCharacter_GetIsHit_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_AMyCharacter_GetIsHit_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_AMyCharacter_GetIsHit()
 	{
 		static UFunction* ReturnFunction = nullptr;
 		if (!ReturnFunction)
 		{
-			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AMyCharacter_OnTestHit_Statics::FuncParams);
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AMyCharacter_GetIsHit_Statics::FuncParams);
 		}
 		return ReturnFunction;
 	}
@@ -274,10 +238,6 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 		static const UE4CodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
 #if WITH_METADATA
-		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_num_MetaData[];
-#endif
-		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_num;
-#if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_enemyNum_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_enemyNum;
@@ -285,11 +245,6 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_enemyDistance_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_enemyDistance;
-#if WITH_METADATA
-		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_test_MetaData[];
-#endif
-		static void NewProp_test_SetBit(void* Obj);
-		static const UE4CodeGen_Private::FBoolPropertyParams NewProp_test;
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_ishit_MetaData[];
 #endif
@@ -330,7 +285,7 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 	};
 	const FClassFunctionLinkInfo Z_Construct_UClass_AMyCharacter_Statics::FuncInfo[] = {
 		{ &Z_Construct_UFunction_AMyCharacter_GetIsAttack, "GetIsAttack" }, // 1663883899
-		{ &Z_Construct_UFunction_AMyCharacter_OnTestHit, "OnTestHit" }, // 1323314361
+		{ &Z_Construct_UFunction_AMyCharacter_GetIsHit, "GetIsHit" }, // 4094972655
 		{ &Z_Construct_UFunction_AMyCharacter_OnTestOverlapBegin, "OnTestOverlapBegin" }, // 2947200575
 		{ &Z_Construct_UFunction_AMyCharacter_OnTestOverlapEnd, "OnTestOverlapEnd" }, // 2757193145
 	};
@@ -341,13 +296,6 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 		{ "ModuleRelativePath", "MyCharacter.h" },
 	};
 #endif
-#if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMyCharacter_Statics::NewProp_num_MetaData[] = {
-		{ "Category", "MyCharacter" },
-		{ "ModuleRelativePath", "MyCharacter.h" },
-	};
-#endif
-	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UClass_AMyCharacter_Statics::NewProp_num = { UE4CodeGen_Private::EPropertyClass::Int, "num", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0020080000000005, 1, nullptr, STRUCT_OFFSET(AMyCharacter, num), METADATA_PARAMS(Z_Construct_UClass_AMyCharacter_Statics::NewProp_num_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMyCharacter_Statics::NewProp_num_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMyCharacter_Statics::NewProp_enemyNum_MetaData[] = {
 		{ "Category", "MyCharacter" },
@@ -362,17 +310,6 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 	};
 #endif
 	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AMyCharacter_Statics::NewProp_enemyDistance = { UE4CodeGen_Private::EPropertyClass::Float, "enemyDistance", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0020080000000005, 1, nullptr, STRUCT_OFFSET(AMyCharacter, enemyDistance), METADATA_PARAMS(Z_Construct_UClass_AMyCharacter_Statics::NewProp_enemyDistance_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMyCharacter_Statics::NewProp_enemyDistance_MetaData)) };
-#if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMyCharacter_Statics::NewProp_test_MetaData[] = {
-		{ "Category", "MyCharacter" },
-		{ "ModuleRelativePath", "MyCharacter.h" },
-	};
-#endif
-	void Z_Construct_UClass_AMyCharacter_Statics::NewProp_test_SetBit(void* Obj)
-	{
-		((AMyCharacter*)Obj)->test = 1;
-	}
-	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AMyCharacter_Statics::NewProp_test = { UE4CodeGen_Private::EPropertyClass::Bool, "test", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0020080000000005, 1, nullptr, sizeof(bool), UE4CodeGen_Private::ENativeBool::Native, sizeof(AMyCharacter), &Z_Construct_UClass_AMyCharacter_Statics::NewProp_test_SetBit, METADATA_PARAMS(Z_Construct_UClass_AMyCharacter_Statics::NewProp_test_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMyCharacter_Statics::NewProp_test_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMyCharacter_Statics::NewProp_ishit_MetaData[] = {
 		{ "Category", "MyCharacter" },
@@ -440,10 +377,8 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMyCharacter_Statics::NewProp_SideViewCameraComponent = { UE4CodeGen_Private::EPropertyClass::Object, "SideViewCameraComponent", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x00400000000a001d, 1, nullptr, STRUCT_OFFSET(AMyCharacter, SideViewCameraComponent), Z_Construct_UClass_UCameraComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AMyCharacter_Statics::NewProp_SideViewCameraComponent_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMyCharacter_Statics::NewProp_SideViewCameraComponent_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AMyCharacter_Statics::PropPointers[] = {
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyCharacter_Statics::NewProp_num,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyCharacter_Statics::NewProp_enemyNum,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyCharacter_Statics::NewProp_enemyDistance,
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyCharacter_Statics::NewProp_test,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyCharacter_Statics::NewProp_ishit,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyCharacter_Statics::NewProp_defaultWalkSpeed,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyCharacter_Statics::NewProp_MaxWalkSpeed,
@@ -475,7 +410,7 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AMyCharacter, 776950208);
+	IMPLEMENT_CLASS(AMyCharacter, 1136109526);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_AMyCharacter(Z_Construct_UClass_AMyCharacter, &AMyCharacter::StaticClass, TEXT("/Script/GFF"), TEXT("AMyCharacter"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(AMyCharacter);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
