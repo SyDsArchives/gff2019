@@ -11,17 +11,19 @@ class GFF_API AMyEnemy : public ACharacter
 {
 	GENERATED_BODY()
 
-public:
-	// Sets default values for this character's properties
-	AMyEnemy();
-
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 	bool isFound;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool isDamaged;
+
+	int InvincibleTime;
+
 public:	
+	AMyEnemy();
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
@@ -32,5 +34,13 @@ public:
 	bool GetisFound();
 	UFUNCTION(BlueprintCallable, Category = "MyEnemyBlueprint")
 	void SetisFound(bool flag);
+
+	UFUNCTION(BlueprintCallable, Category = "MyEnemyBlueprint")
+	bool GetisDamaged();
+
+	UFUNCTION(BlueprintCallable, Category = "MyEnemyBlueprint")
+	void OnBeginOverlap(class UPrimitiveComponent* OverlapComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex, bool bFromSweep, FHitResult& SweepResult);
+	UFUNCTION(BlueprintCallable, Category = "MyEnemyBlueprint")
+	void OnEndOverlap(class UPrimitiveComponent* OverlapComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex);
 
 };

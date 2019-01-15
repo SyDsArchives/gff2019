@@ -148,6 +148,7 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AMyCharacter); \
 	FORCEINLINE static uint32 __PPO__SideViewCameraComponent() { return STRUCT_OFFSET(AMyCharacter, SideViewCameraComponent); } \
 	FORCEINLINE static uint32 __PPO__CameraBoom() { return STRUCT_OFFSET(AMyCharacter, CameraBoom); } \
 	FORCEINLINE static uint32 __PPO__EnemySearch() { return STRUCT_OFFSET(AMyCharacter, EnemySearch); } \
+	FORCEINLINE static uint32 __PPO__PunchCollision() { return STRUCT_OFFSET(AMyCharacter, PunchCollision); } \
 	FORCEINLINE static uint32 __PPO__attackflag() { return STRUCT_OFFSET(AMyCharacter, attackflag); } \
 	FORCEINLINE static uint32 __PPO__MaxWalkSpeed() { return STRUCT_OFFSET(AMyCharacter, MaxWalkSpeed); } \
 	FORCEINLINE static uint32 __PPO__defaultWalkSpeed() { return STRUCT_OFFSET(AMyCharacter, defaultWalkSpeed); } \

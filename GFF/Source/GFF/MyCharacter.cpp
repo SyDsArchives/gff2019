@@ -62,10 +62,6 @@ AMyCharacter::AMyCharacter():attackflag(false),MaxWalkSpeed(10000), defaultWalkS
 	FScriptDelegate DelegateEnd;
 	DelegateEnd.BindUFunction(this, "OnTestOverlapEnd");
 	EnemySearch->OnComponentEndOverlap.Add(DelegateEnd);
-
-	//DummyBlade = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("DummyBlade"));
-	//DummyBlade->SetupAttachment(GetRootComponent());
-	//DummyBlade->SetWorldTransform(FTransform(FRotator(0.f,0.f,0.f),FVector(130.f,90.f,30.f),FVector(2.0f,0.1f,0.1f)));
 	
 	//CharacterMovement‚ÌÝ’è
 	GetCharacterMovement()->bOrientRotationToMovement = true;
@@ -76,9 +72,6 @@ AMyCharacter::AMyCharacter():attackflag(false),MaxWalkSpeed(10000), defaultWalkS
 	GetCharacterMovement()->GroundFriction = 3.f;
 	GetCharacterMovement()->MaxWalkSpeed = 500;//defaultWalkSpeedŽQÆ
 	GetCharacterMovement()->MaxFlySpeed = 600.f;
-
-	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
-	// are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++
 
 	ishit = false;//‰¼‚Å“G‚Ì“–‚½‚è”»’è‚ðŽæ“¾
 
@@ -120,7 +113,12 @@ void AMyCharacter::Tick(float DeltaTime)
 
 void AMyCharacter::OnTestOverlapBegin(AActor* OtherActor, UPrimitiveComponent * OtherComponent, int32 OtherBodyIndex, bool bFromSweep, FHitResult & SweepResult)
 {
-	if (OtherActor->ActorHasTag("Enemy"))
+	//if (OtherActor->ActorHasTag("Enemy"))
+	//{
+	//	++enemyNum;
+	//}
+
+	if (OtherComponent->ComponentHasTag("Enemy"))
 	{
 		++enemyNum;
 	}
@@ -128,7 +126,12 @@ void AMyCharacter::OnTestOverlapBegin(AActor* OtherActor, UPrimitiveComponent * 
 
 void AMyCharacter::OnTestOverlapEnd(AActor * OtherActor, UPrimitiveComponent * OtherComponent, int32 OtherBodyIndex)
 {
-	if (OtherActor->ActorHasTag("Enemy"))
+	//if (OtherActor->ActorHasTag("Enemy"))
+	//{
+	//	--enemyNum;
+	//}
+
+	if (OtherComponent->ComponentHasTag("Enemy"))
 	{
 		--enemyNum;
 	}

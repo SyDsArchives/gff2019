@@ -24,8 +24,9 @@ class GFF_API AMyCharacter : public ACharacter
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Attack, meta = (AllowPrivateAccess = "true"))
 	class UBoxComponent* EnemySearch;
 
-	//UPROPERTY(EditAnyWhere, BlueprintReadOnly, Category = Attack, meta = (AllowPrivateAccess = "true"))
-	//class UStaticMeshComponent* DummyBlade;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Attack, meta = (AllowPrivateAccess = "true"))
+	class UBoxComponent* PunchCollision;
+
 
 	FVector EnemyLocation;
 

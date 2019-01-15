@@ -1,12 +1,6 @@
 ﻿  Using 'git status' to determine working set for adaptive non-unity build (D:\UnrealEngine\gff2019).
-  Creating makefile for hot reloading GFFEditor (source directory changed)
-  Compiling game modules for hot reload
+  Creating makefile for GFFEditor (ini files are newer than UBTMakefile)
   Using Visual Studio 2017 14.16.27023 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023) and Windows 10.0.16299.0 SDK (C:\Program Files (x86)\Windows Kits\10).
-  Building 3 actions with 8 processes...
-    [1/3] MyCharacter.cpp
-    [2/3] UE4Editor-GFF-2801.lib
-       ライブラリ D:\UnrealEngine\gff2019\GFF\Intermediate\Build\Win64\UE4Editor\Development\GFF\UE4Editor-GFF-2801.lib とオブジェクト D:\UnrealEngine\gff2019\GFF\Intermediate\Build\Win64\UE4Editor\Development\GFF\UE4Editor-GFF-2801.exp を作成中
-    [3/3] UE4Editor-GFF-2801.dll
-       ライブラリ D:\UnrealEngine\gff2019\GFF\Intermediate\Build\Win64\UE4Editor\Development\GFF\UE4Editor-GFF-2801.suppressed.lib とオブジェクト D:\UnrealEngine\gff2019\GFF\Intermediate\Build\Win64\UE4Editor\Development\GFF\UE4Editor-GFF-2801.suppressed.exp を作成中
+  Target is up to date
   Deploying GFFEditor Win64 Development...
-  Total build time: 288.36 seconds (Parallel executor: 274.16 seconds)
+  Total build time: 4.45 seconds (NoActionsToExecute executor: 0.00 seconds)
