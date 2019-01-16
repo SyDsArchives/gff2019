@@ -298,6 +298,7 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 		{ "HideCategories", "Navigation" },
 		{ "IncludePath", "MyCharacter.h" },
 		{ "ModuleRelativePath", "MyCharacter.h" },
+		{ "ToolTip", "struct FDataTime;" },
 	};
 #endif
 #if WITH_METADATA
@@ -424,7 +425,7 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AMyCharacter, 4093229245);
+	IMPLEMENT_CLASS(AMyCharacter, 240170761);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_AMyCharacter(Z_Construct_UClass_AMyCharacter, &AMyCharacter::StaticClass, TEXT("/Script/GFF"), TEXT("AMyCharacter"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(AMyCharacter);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

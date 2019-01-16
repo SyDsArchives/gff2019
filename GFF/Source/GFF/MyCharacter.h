@@ -8,7 +8,7 @@
 
 class ATimeActor;
 struct FVector;
-struct FDataTime;
+//struct FDataTime;
 UCLASS(config = Game)
 class GFF_API AMyCharacter : public ACharacter
 {
@@ -28,13 +28,13 @@ class GFF_API AMyCharacter : public ACharacter
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Attack, meta = (AllowPrivateAccess = "true"))
 	class UBoxComponent* PunchCollision;
 
-
 	FVector EnemyLocation;
 	
-	class ATimeActor* timer;
-	int LastTime;
+	float LastTime;
 
-	int CoolTime;
+	float CurrentCoolTime;
+
+	float CoolTime;
 
 protected:
 
@@ -45,6 +45,8 @@ protected:
 	void MoveRightLeft(float Val);
 	void MoveUpDown(float Val);
 	void Attack(float val);
+
+	void Attack_Action();
 
 	// APawn interface
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
