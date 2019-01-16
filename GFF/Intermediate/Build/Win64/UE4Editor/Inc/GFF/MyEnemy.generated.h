@@ -44,11 +44,19 @@ struct FHitResult;
 		P_NATIVE_END; \
 	} \
  \
-	DECLARE_FUNCTION(execGetisDamaged) \
+	DECLARE_FUNCTION(execGetIsDead) \
 	{ \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
-		*(bool*)Z_Param__Result=P_THIS->GetisDamaged(); \
+		*(bool*)Z_Param__Result=P_THIS->GetIsDead(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execGetIsDamaged) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(bool*)Z_Param__Result=P_THIS->GetIsDamaged(); \
 		P_NATIVE_END; \
 	} \
  \
@@ -98,11 +106,19 @@ struct FHitResult;
 		P_NATIVE_END; \
 	} \
  \
-	DECLARE_FUNCTION(execGetisDamaged) \
+	DECLARE_FUNCTION(execGetIsDead) \
 	{ \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
-		*(bool*)Z_Param__Result=P_THIS->GetisDamaged(); \
+		*(bool*)Z_Param__Result=P_THIS->GetIsDead(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execGetIsDamaged) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(bool*)Z_Param__Result=P_THIS->GetIsDamaged(); \
 		P_NATIVE_END; \
 	} \
  \
@@ -167,7 +183,10 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AMyEnemy); \
 
 
 #define GFF_Source_GFF_MyEnemy_h_12_PRIVATE_PROPERTY_OFFSET \
-	FORCEINLINE static uint32 __PPO__isDamaged() { return STRUCT_OFFSET(AMyEnemy, isDamaged); }
+	FORCEINLINE static uint32 __PPO__IsDamaged() { return STRUCT_OFFSET(AMyEnemy, IsDamaged); } \
+	FORCEINLINE static uint32 __PPO__IsDead() { return STRUCT_OFFSET(AMyEnemy, IsDead); } \
+	FORCEINLINE static uint32 __PPO__Vitality() { return STRUCT_OFFSET(AMyEnemy, Vitality); } \
+	FORCEINLINE static uint32 __PPO__BeforeVitality() { return STRUCT_OFFSET(AMyEnemy, BeforeVitality); }
 
 
 #define GFF_Source_GFF_MyEnemy_h_9_PROLOG

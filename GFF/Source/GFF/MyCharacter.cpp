@@ -113,11 +113,6 @@ void AMyCharacter::Tick(float DeltaTime)
 
 void AMyCharacter::OnTestOverlapBegin(AActor* OtherActor, UPrimitiveComponent * OtherComponent, int32 OtherBodyIndex, bool bFromSweep, FHitResult & SweepResult)
 {
-	//if (OtherActor->ActorHasTag("Enemy"))
-	//{
-	//	++enemyNum;
-	//}
-
 	if (OtherComponent->ComponentHasTag("Enemy"))
 	{
 		++enemyNum;
@@ -126,11 +121,6 @@ void AMyCharacter::OnTestOverlapBegin(AActor* OtherActor, UPrimitiveComponent * 
 
 void AMyCharacter::OnTestOverlapEnd(AActor * OtherActor, UPrimitiveComponent * OtherComponent, int32 OtherBodyIndex)
 {
-	//if (OtherActor->ActorHasTag("Enemy"))
-	//{
-	//	--enemyNum;
-	//}
-
 	if (OtherComponent->ComponentHasTag("Enemy"))
 	{
 		--enemyNum;
@@ -185,7 +175,6 @@ void AMyCharacter::Attack(float val)
 	if (val >= 0.1f)
 	{
 		attackflag = true;
-		//DummyBlade->AddLocalOffset(FVector(0, AttackSpeed, 0));
 		
 		if (enemyNum != 0)
 		{
@@ -203,9 +192,7 @@ void AMyCharacter::Attack(float val)
 			}
 
 			AddMovementInput(vec, 1);
-
 		}
-		
 	}
 	else
 	{

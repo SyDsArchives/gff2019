@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include <vector>
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "MyCharacter.generated.h"

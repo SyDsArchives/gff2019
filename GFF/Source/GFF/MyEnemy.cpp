@@ -2,10 +2,11 @@
 
 #include "MyEnemy.h"
 #include "Components/CapsuleComponent.h"
-#include "Runtime/Engine/Classes/Engine/Engine.h"
+//#include "Runtime/Engine/Classes/Engine/Engine.h"
 
 // Sets default values
-AMyEnemy::AMyEnemy():isFound(false),isDamaged(false),InvincibleTime(0)
+AMyEnemy::AMyEnemy():isFound(false), IsDamaged(false), IsDead(false),
+InvincibleTime(0), Vitality(10), BeforeVitality(10)
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -32,12 +33,17 @@ void AMyEnemy::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (isDamaged)
+	if (IsDamaged)
 	{
 		if (--InvincibleTime <= 0)
 		{
-			isDamaged = false;
+			IsDamaged = false;
 		}
+	}
+
+	if (Vitality <= 0)
+	{
+		IsDead = true;
 	}
 }
 
@@ -45,7 +51,6 @@ void AMyEnemy::Tick(float DeltaTime)
 void AMyEnemy::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
-
 }
 
 bool AMyEnemy::GetisFound()
@@ -58,25 +63,28 @@ void AMyEnemy::SetisFound(bool flag)
 	isFound = flag;
 }
 
-bool AMyEnemy::GetisDamaged()
+bool AMyEnemy::GetIsDamaged()
 {
-	return isDamaged;
+	return IsDamaged;
+}
+
+bool AMyEnemy::GetIsDead()
+{
+	return IsDead;
 }
 
 void AMyEnemy::OnBeginOverlap(UPrimitiveComponent * OverlapComponent, AActor * OtherActor, UPrimitiveComponent * OtherComponent, int32 OtherBodyIndex, bool bFromSweep, FHitResult & SweepResult)
 {
-	//if (OtherActor->ActorHasTag("Player"))
-	//{
-	//	//GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Red, TEXT("BeginOverlap"));
-	//	isDamaged = true;
-	//	InvincibleTime = 30;
-	//}
-
 	if (OtherComponent->ComponentHasTag("Attack"))
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Red, TEXT("BeginOverlap"));
-		isDamaged = true;
-		InvincibleTime = 30;
+		//GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Red, TEXT("BeginOverlap"));
+		BeforeVitality = Vitality;
+
+		IsDamaged = true;
+
+		--Vitality;
+
+		InvincibleTime = 10;
 	}
 }
 

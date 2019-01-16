@@ -1,6 +1,4 @@
-﻿  Using 'git status' to determine working set for adaptive non-unity build (D:\UnrealEngine\gff2019).
-  Creating makefile for GFFEditor (ini files are newer than UBTMakefile)
-  Using Visual Studio 2017 14.16.27023 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023) and Windows 10.0.16299.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+﻿  Using 'git status' to determine working set for adaptive non-unity build (C:\Users\1601298\Documents\GitHub\gff2019).
   Target is up to date
   Deploying GFFEditor Win64 Development...
-  Total build time: 4.45 seconds (NoActionsToExecute executor: 0.00 seconds)
+  Total build time: 0.98 seconds (NoActionsToExecute executor: 0.00 seconds)

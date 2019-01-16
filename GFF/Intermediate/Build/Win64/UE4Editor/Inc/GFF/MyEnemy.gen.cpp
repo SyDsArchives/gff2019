@@ -17,7 +17,8 @@ void EmptyLinkFunctionForGeneratedCodeMyEnemy() {}
 	GFF_API UClass* Z_Construct_UClass_AMyEnemy();
 	ENGINE_API UClass* Z_Construct_UClass_ACharacter();
 	UPackage* Z_Construct_UPackage__Script_GFF();
-	GFF_API UFunction* Z_Construct_UFunction_AMyEnemy_GetisDamaged();
+	GFF_API UFunction* Z_Construct_UFunction_AMyEnemy_GetIsDamaged();
+	GFF_API UFunction* Z_Construct_UFunction_AMyEnemy_GetIsDead();
 	GFF_API UFunction* Z_Construct_UFunction_AMyEnemy_GetisFound();
 	GFF_API UFunction* Z_Construct_UFunction_AMyEnemy_OnBeginOverlap();
 	ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FHitResult();
@@ -30,7 +31,8 @@ void EmptyLinkFunctionForGeneratedCodeMyEnemy() {}
 	{
 		UClass* Class = AMyEnemy::StaticClass();
 		static const FNameNativePtrPair Funcs[] = {
-			{ "GetisDamaged", &AMyEnemy::execGetisDamaged },
+			{ "GetIsDamaged", &AMyEnemy::execGetIsDamaged },
+			{ "GetIsDead", &AMyEnemy::execGetIsDead },
 			{ "GetisFound", &AMyEnemy::execGetisFound },
 			{ "OnBeginOverlap", &AMyEnemy::execOnBeginOverlap },
 			{ "OnEndOverlap", &AMyEnemy::execOnEndOverlap },
@@ -38,9 +40,9 @@ void EmptyLinkFunctionForGeneratedCodeMyEnemy() {}
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, ARRAY_COUNT(Funcs));
 	}
-	struct Z_Construct_UFunction_AMyEnemy_GetisDamaged_Statics
+	struct Z_Construct_UFunction_AMyEnemy_GetIsDamaged_Statics
 	{
-		struct MyEnemy_eventGetisDamaged_Parms
+		struct MyEnemy_eventGetIsDamaged_Parms
 		{
 			bool ReturnValue;
 		};
@@ -52,27 +54,66 @@ void EmptyLinkFunctionForGeneratedCodeMyEnemy() {}
 #endif
 		static const UE4CodeGen_Private::FFunctionParams FuncParams;
 	};
-	void Z_Construct_UFunction_AMyEnemy_GetisDamaged_Statics::NewProp_ReturnValue_SetBit(void* Obj)
+	void Z_Construct_UFunction_AMyEnemy_GetIsDamaged_Statics::NewProp_ReturnValue_SetBit(void* Obj)
 	{
-		((MyEnemy_eventGetisDamaged_Parms*)Obj)->ReturnValue = 1;
+		((MyEnemy_eventGetIsDamaged_Parms*)Obj)->ReturnValue = 1;
 	}
-	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_AMyEnemy_GetisDamaged_Statics::NewProp_ReturnValue = { UE4CodeGen_Private::EPropertyClass::Bool, "ReturnValue", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0010000000000580, 1, nullptr, sizeof(bool), UE4CodeGen_Private::ENativeBool::Native, sizeof(MyEnemy_eventGetisDamaged_Parms), &Z_Construct_UFunction_AMyEnemy_GetisDamaged_Statics::NewProp_ReturnValue_SetBit, METADATA_PARAMS(nullptr, 0) };
-	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AMyEnemy_GetisDamaged_Statics::PropPointers[] = {
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AMyEnemy_GetisDamaged_Statics::NewProp_ReturnValue,
+	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_AMyEnemy_GetIsDamaged_Statics::NewProp_ReturnValue = { UE4CodeGen_Private::EPropertyClass::Bool, "ReturnValue", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0010000000000580, 1, nullptr, sizeof(bool), UE4CodeGen_Private::ENativeBool::Native, sizeof(MyEnemy_eventGetIsDamaged_Parms), &Z_Construct_UFunction_AMyEnemy_GetIsDamaged_Statics::NewProp_ReturnValue_SetBit, METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AMyEnemy_GetIsDamaged_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AMyEnemy_GetIsDamaged_Statics::NewProp_ReturnValue,
 	};
 #if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AMyEnemy_GetisDamaged_Statics::Function_MetaDataParams[] = {
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AMyEnemy_GetIsDamaged_Statics::Function_MetaDataParams[] = {
 		{ "Category", "MyEnemyBlueprint" },
 		{ "ModuleRelativePath", "MyEnemy.h" },
+		{ "ToolTip", "?\xc7\x97??n" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AMyEnemy_GetisDamaged_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AMyEnemy, "GetisDamaged", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x04020401, sizeof(MyEnemy_eventGetisDamaged_Parms), Z_Construct_UFunction_AMyEnemy_GetisDamaged_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_AMyEnemy_GetisDamaged_Statics::PropPointers), 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AMyEnemy_GetisDamaged_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_AMyEnemy_GetisDamaged_Statics::Function_MetaDataParams)) };
-	UFunction* Z_Construct_UFunction_AMyEnemy_GetisDamaged()
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AMyEnemy_GetIsDamaged_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AMyEnemy, "GetIsDamaged", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x04020401, sizeof(MyEnemy_eventGetIsDamaged_Parms), Z_Construct_UFunction_AMyEnemy_GetIsDamaged_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_AMyEnemy_GetIsDamaged_Statics::PropPointers), 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AMyEnemy_GetIsDamaged_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_AMyEnemy_GetIsDamaged_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_AMyEnemy_GetIsDamaged()
 	{
 		static UFunction* ReturnFunction = nullptr;
 		if (!ReturnFunction)
 		{
-			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AMyEnemy_GetisDamaged_Statics::FuncParams);
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AMyEnemy_GetIsDamaged_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_AMyEnemy_GetIsDead_Statics
+	{
+		struct MyEnemy_eventGetIsDead_Parms
+		{
+			bool ReturnValue;
+		};
+		static void NewProp_ReturnValue_SetBit(void* Obj);
+		static const UE4CodeGen_Private::FBoolPropertyParams NewProp_ReturnValue;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+	void Z_Construct_UFunction_AMyEnemy_GetIsDead_Statics::NewProp_ReturnValue_SetBit(void* Obj)
+	{
+		((MyEnemy_eventGetIsDead_Parms*)Obj)->ReturnValue = 1;
+	}
+	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_AMyEnemy_GetIsDead_Statics::NewProp_ReturnValue = { UE4CodeGen_Private::EPropertyClass::Bool, "ReturnValue", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0010000000000580, 1, nullptr, sizeof(bool), UE4CodeGen_Private::ENativeBool::Native, sizeof(MyEnemy_eventGetIsDead_Parms), &Z_Construct_UFunction_AMyEnemy_GetIsDead_Statics::NewProp_ReturnValue_SetBit, METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AMyEnemy_GetIsDead_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AMyEnemy_GetIsDead_Statics::NewProp_ReturnValue,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AMyEnemy_GetIsDead_Statics::Function_MetaDataParams[] = {
+		{ "Category", "MyEnemyBlueprint" },
+		{ "ModuleRelativePath", "MyEnemy.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AMyEnemy_GetIsDead_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AMyEnemy, "GetIsDead", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x04020401, sizeof(MyEnemy_eventGetIsDead_Parms), Z_Construct_UFunction_AMyEnemy_GetIsDead_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_AMyEnemy_GetIsDead_Statics::PropPointers), 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AMyEnemy_GetIsDead_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_AMyEnemy_GetIsDead_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_AMyEnemy_GetIsDead()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AMyEnemy_GetIsDead_Statics::FuncParams);
 		}
 		return ReturnFunction;
 	}
@@ -176,6 +217,7 @@ void EmptyLinkFunctionForGeneratedCodeMyEnemy() {}
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AMyEnemy_OnBeginOverlap_Statics::Function_MetaDataParams[] = {
 		{ "Category", "MyEnemyBlueprint" },
 		{ "ModuleRelativePath", "MyEnemy.h" },
+		{ "ToolTip", "Overlap" },
 	};
 #endif
 	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AMyEnemy_OnBeginOverlap_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AMyEnemy, "OnBeginOverlap", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x04420401, sizeof(MyEnemy_eventOnBeginOverlap_Parms), Z_Construct_UFunction_AMyEnemy_OnBeginOverlap_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_AMyEnemy_OnBeginOverlap_Statics::PropPointers), 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AMyEnemy_OnBeginOverlap_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_AMyEnemy_OnBeginOverlap_Statics::Function_MetaDataParams)) };
@@ -299,10 +341,23 @@ void EmptyLinkFunctionForGeneratedCodeMyEnemy() {}
 		static const UE4CodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
 #if WITH_METADATA
-		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_isDamaged_MetaData[];
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_BeforeVitality_MetaData[];
 #endif
-		static void NewProp_isDamaged_SetBit(void* Obj);
-		static const UE4CodeGen_Private::FBoolPropertyParams NewProp_isDamaged;
+		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_BeforeVitality;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Vitality_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_Vitality;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_IsDead_MetaData[];
+#endif
+		static void NewProp_IsDead_SetBit(void* Obj);
+		static const UE4CodeGen_Private::FBoolPropertyParams NewProp_IsDead;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_IsDamaged_MetaData[];
+#endif
+		static void NewProp_IsDamaged_SetBit(void* Obj);
+		static const UE4CodeGen_Private::FBoolPropertyParams NewProp_IsDamaged;
 		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UE4CodeGen_Private::FClassParams ClassParams;
@@ -312,9 +367,10 @@ void EmptyLinkFunctionForGeneratedCodeMyEnemy() {}
 		(UObject* (*)())Z_Construct_UPackage__Script_GFF,
 	};
 	const FClassFunctionLinkInfo Z_Construct_UClass_AMyEnemy_Statics::FuncInfo[] = {
-		{ &Z_Construct_UFunction_AMyEnemy_GetisDamaged, "GetisDamaged" }, // 386600259
+		{ &Z_Construct_UFunction_AMyEnemy_GetIsDamaged, "GetIsDamaged" }, // 967801000
+		{ &Z_Construct_UFunction_AMyEnemy_GetIsDead, "GetIsDead" }, // 3529987543
 		{ &Z_Construct_UFunction_AMyEnemy_GetisFound, "GetisFound" }, // 3943529923
-		{ &Z_Construct_UFunction_AMyEnemy_OnBeginOverlap, "OnBeginOverlap" }, // 2468775462
+		{ &Z_Construct_UFunction_AMyEnemy_OnBeginOverlap, "OnBeginOverlap" }, // 1664587663
 		{ &Z_Construct_UFunction_AMyEnemy_OnEndOverlap, "OnEndOverlap" }, // 551132002
 		{ &Z_Construct_UFunction_AMyEnemy_SetisFound, "SetisFound" }, // 854921429
 	};
@@ -326,18 +382,46 @@ void EmptyLinkFunctionForGeneratedCodeMyEnemy() {}
 	};
 #endif
 #if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMyEnemy_Statics::NewProp_isDamaged_MetaData[] = {
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMyEnemy_Statics::NewProp_BeforeVitality_MetaData[] = {
 		{ "Category", "MyEnemy" },
 		{ "ModuleRelativePath", "MyEnemy.h" },
 	};
 #endif
-	void Z_Construct_UClass_AMyEnemy_Statics::NewProp_isDamaged_SetBit(void* Obj)
+	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UClass_AMyEnemy_Statics::NewProp_BeforeVitality = { UE4CodeGen_Private::EPropertyClass::Int, "BeforeVitality", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0020080000000005, 1, nullptr, STRUCT_OFFSET(AMyEnemy, BeforeVitality), METADATA_PARAMS(Z_Construct_UClass_AMyEnemy_Statics::NewProp_BeforeVitality_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMyEnemy_Statics::NewProp_BeforeVitality_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMyEnemy_Statics::NewProp_Vitality_MetaData[] = {
+		{ "Category", "MyEnemy" },
+		{ "ModuleRelativePath", "MyEnemy.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UClass_AMyEnemy_Statics::NewProp_Vitality = { UE4CodeGen_Private::EPropertyClass::Int, "Vitality", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0020080000000005, 1, nullptr, STRUCT_OFFSET(AMyEnemy, Vitality), METADATA_PARAMS(Z_Construct_UClass_AMyEnemy_Statics::NewProp_Vitality_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMyEnemy_Statics::NewProp_Vitality_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMyEnemy_Statics::NewProp_IsDead_MetaData[] = {
+		{ "Category", "MyEnemy" },
+		{ "ModuleRelativePath", "MyEnemy.h" },
+	};
+#endif
+	void Z_Construct_UClass_AMyEnemy_Statics::NewProp_IsDead_SetBit(void* Obj)
 	{
-		((AMyEnemy*)Obj)->isDamaged = 1;
+		((AMyEnemy*)Obj)->IsDead = 1;
 	}
-	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AMyEnemy_Statics::NewProp_isDamaged = { UE4CodeGen_Private::EPropertyClass::Bool, "isDamaged", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0020080000000005, 1, nullptr, sizeof(bool), UE4CodeGen_Private::ENativeBool::Native, sizeof(AMyEnemy), &Z_Construct_UClass_AMyEnemy_Statics::NewProp_isDamaged_SetBit, METADATA_PARAMS(Z_Construct_UClass_AMyEnemy_Statics::NewProp_isDamaged_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMyEnemy_Statics::NewProp_isDamaged_MetaData)) };
+	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AMyEnemy_Statics::NewProp_IsDead = { UE4CodeGen_Private::EPropertyClass::Bool, "IsDead", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0020080000000005, 1, nullptr, sizeof(bool), UE4CodeGen_Private::ENativeBool::Native, sizeof(AMyEnemy), &Z_Construct_UClass_AMyEnemy_Statics::NewProp_IsDead_SetBit, METADATA_PARAMS(Z_Construct_UClass_AMyEnemy_Statics::NewProp_IsDead_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMyEnemy_Statics::NewProp_IsDead_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMyEnemy_Statics::NewProp_IsDamaged_MetaData[] = {
+		{ "Category", "MyEnemy" },
+		{ "ModuleRelativePath", "MyEnemy.h" },
+	};
+#endif
+	void Z_Construct_UClass_AMyEnemy_Statics::NewProp_IsDamaged_SetBit(void* Obj)
+	{
+		((AMyEnemy*)Obj)->IsDamaged = 1;
+	}
+	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AMyEnemy_Statics::NewProp_IsDamaged = { UE4CodeGen_Private::EPropertyClass::Bool, "IsDamaged", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0020080000000005, 1, nullptr, sizeof(bool), UE4CodeGen_Private::ENativeBool::Native, sizeof(AMyEnemy), &Z_Construct_UClass_AMyEnemy_Statics::NewProp_IsDamaged_SetBit, METADATA_PARAMS(Z_Construct_UClass_AMyEnemy_Statics::NewProp_IsDamaged_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMyEnemy_Statics::NewProp_IsDamaged_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AMyEnemy_Statics::PropPointers[] = {
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyEnemy_Statics::NewProp_isDamaged,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyEnemy_Statics::NewProp_BeforeVitality,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyEnemy_Statics::NewProp_Vitality,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyEnemy_Statics::NewProp_IsDead,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyEnemy_Statics::NewProp_IsDamaged,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_AMyEnemy_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<AMyEnemy>::IsAbstract,
@@ -362,7 +446,7 @@ void EmptyLinkFunctionForGeneratedCodeMyEnemy() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AMyEnemy, 3578419372);
+	IMPLEMENT_CLASS(AMyEnemy, 1562815409);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_AMyEnemy(Z_Construct_UClass_AMyEnemy, &AMyEnemy::StaticClass, TEXT("/Script/GFF"), TEXT("AMyEnemy"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(AMyEnemy);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

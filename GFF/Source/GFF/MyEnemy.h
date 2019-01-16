@@ -18,7 +18,15 @@ protected:
 	bool isFound;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	bool isDamaged;
+	bool IsDamaged;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool IsDead;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int Vitality;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int BeforeVitality;
 
 	int InvincibleTime;
 
@@ -35,9 +43,15 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "MyEnemyBlueprint")
 	void SetisFound(bool flag);
 
-	UFUNCTION(BlueprintCallable, Category = "MyEnemyBlueprint")
-	bool GetisDamaged();
 
+	//ä«óùån
+	UFUNCTION(BlueprintCallable, Category = "MyEnemyBlueprint")
+	bool GetIsDamaged();
+	UFUNCTION(BlueprintCallable, Category = "MyEnemyBlueprint")
+	bool GetIsDead();
+
+
+	//Overlap
 	UFUNCTION(BlueprintCallable, Category = "MyEnemyBlueprint")
 	void OnBeginOverlap(class UPrimitiveComponent* OverlapComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex, bool bFromSweep, FHitResult& SweepResult);
 	UFUNCTION(BlueprintCallable, Category = "MyEnemyBlueprint")
