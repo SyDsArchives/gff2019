@@ -6,7 +6,9 @@
 #include "GameFramework/Character.h"
 #include "MyCharacter.generated.h"
 
+class ATimeActor;
 struct FVector;
+struct FDataTime;
 UCLASS(config = Game)
 class GFF_API AMyCharacter : public ACharacter
 {
@@ -28,6 +30,11 @@ class GFF_API AMyCharacter : public ACharacter
 
 
 	FVector EnemyLocation;
+	
+	class ATimeActor* timer;
+	int LastTime;
+
+	int CoolTime;
 
 protected:
 

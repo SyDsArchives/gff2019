@@ -62,12 +62,18 @@
     <ClInclude Include="..\..\Source\GFF\MyEnemy.h">
       <Filter>Source\GFF</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\GFF\TimeActor.h">
+      <Filter>Source\GFF</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\GFF\MyCharacter.cpp">
       <Filter>Source\GFF</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\GFF\MyEnemy.cpp">
+      <Filter>Source\GFF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\GFF\TimeActor.cpp">
       <Filter>Source\GFF</Filter>
     </ClCompile>
   </ItemGroup>

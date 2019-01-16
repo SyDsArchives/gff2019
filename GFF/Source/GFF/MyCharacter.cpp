@@ -13,17 +13,19 @@
 #include "Runtime/Engine/Classes/Components/StaticMeshComponent.h"
 
 #include "MyEnemy.h"
+#include "TimeActor.h"
 
 #include "EngineGlobals.h"//ログ出力
-#include "Runtime/Engine/Classes/Engine/Engine.h"//同上
 
 #include "Runtime/Engine/Classes/Kismet/KismetSystemLibrary.h"
 
+
 // Sets default values
-AMyCharacter::AMyCharacter():attackflag(false),MaxWalkSpeed(10000), defaultWalkSpeed(500)
+AMyCharacter::AMyCharacter():attackflag(false),MaxWalkSpeed(10000), defaultWalkSpeed(500), LastTime(0), timer(nullptr)
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+	//PrimaryActorTick.TickInterval = 1.f;
 
 	//カプセルコンポーネントのサイズを設定
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
@@ -77,6 +79,7 @@ AMyCharacter::AMyCharacter():attackflag(false),MaxWalkSpeed(10000), defaultWalkS
 
 	enemyDistance = -1.f;
 	enemyNum = 0;
+	CoolTime = 0;
 }
 
 // Called when the game starts or when spawned
@@ -84,6 +87,12 @@ void AMyCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	EnemyLocation = this->GetActorLocation();
+
+	for (TActorIterator<ATimeActor> it(GetWorld()); it; ++it)
+	{
+		timer = *it;
+		break;
+	}
 }
 
 // Called every frame
@@ -91,6 +100,19 @@ void AMyCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	FVector playerLocation(this->GetActorLocation().X, this->GetActorLocation().Y, this->GetActorLocation().Z);
+
+	int NowCoolTime = 0;
+	if (CoolTime > 0)
+	{
+		NowCoolTime = timer->GetNowTime() - LastTime;
+	}
+	
+	//if (attackflag && --CoolTime <= 0)
+	if (attackflag && CoolTime <= NowCoolTime)
+	{
+		CoolTime = 0;
+		attackflag = false;
+	}
 
 	for (TActorIterator<AMyEnemy> it(GetWorld()); it; ++it)
 	{
@@ -172,9 +194,14 @@ void AMyCharacter::MoveUpDown(float Val)
 void AMyCharacter::Attack(float val)
 {
 	float AttackSpeed = -3.f;
-	if (val >= 0.1f)
+	if (val >= 0.1f && CoolTime == 0)
 	{
-		attackflag = true;
+		if (attackflag)
+		{
+			attackflag = true;
+			CoolTime = 80;
+			LastTime = timer->GetNowTime();
+		}
 		
 		if (enemyNum != 0)
 		{
@@ -182,14 +209,14 @@ void AMyCharacter::Attack(float val)
 
 			FVector vec = EnemyLocation - playerVec;
 
-			if (!ishit)
+			/*if (!ishit)
 			{
 				GetCharacterMovement()->MaxWalkSpeed = MaxWalkSpeed;
 			}
 			else
 			{
 				GetCharacterMovement()->MaxWalkSpeed = defaultWalkSpeed;
-			}
+			}*/
 
 			AddMovementInput(vec, 1);
 		}
@@ -197,7 +224,6 @@ void AMyCharacter::Attack(float val)
 	else
 	{
 		GetCharacterMovement()->MaxWalkSpeed = defaultWalkSpeed;
-		attackflag = false;
 		ishit = false;
 	}
 }

@@ -645,8 +645,10 @@
   <ItemGroup>
     <ClCompile Include="..\..\Source\GFF\MyCharacter.cpp" />
     <ClCompile Include="..\..\Source\GFF\MyEnemy.cpp" />
+    <ClCompile Include="..\..\Source\GFF\TimeActor.cpp" />
     <ClInclude Include="..\..\Source\GFF\MyCharacter.h" />
     <ClInclude Include="..\..\Source\GFF\MyEnemy.h" />
+    <ClInclude Include="..\..\Source\GFF\TimeActor.h" />
     <None Include="..\..\GFF.uproject" />
     <None Include="..\..\Source\GFF.Target.cs" />
     <None Include="..\..\Source\GFFEditor.Target.cs" />
