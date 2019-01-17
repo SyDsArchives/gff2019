@@ -47,6 +47,7 @@ protected:
 	void Attack(float val);
 
 	void Attack_Action();
+	void AttackEnd();
 
 	// APawn interface
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;

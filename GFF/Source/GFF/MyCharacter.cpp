@@ -24,7 +24,7 @@
 
 
 // Sets default values
-AMyCharacter::AMyCharacter():attackflag(false),MaxWalkSpeed(10000), defaultWalkSpeed(840), LastTime(0), CurrentCoolTime(0), CoolTime(0)
+AMyCharacter::AMyCharacter():attackflag(false),MaxWalkSpeed(10000), defaultWalkSpeed(500), LastTime(0), CurrentCoolTime(0), CoolTime(0)
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -100,37 +100,38 @@ void AMyCharacter::Tick(float DeltaTime)
 
 	float NowTime = GetWorld()->GetTimeSeconds();
 
-	if (CoolTime != 0.f)
+	if (CoolTime != 0)
 	{
 		CurrentCoolTime = NowTime - LastTime;
-		//GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor::Red, FString::Printf(TEXT("%f"), CurrentCoolTime));
+		GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor::Red, FString::Printf(TEXT("%f"), CurrentCoolTime));
 	}
-	
-	if (attackflag && CoolTime <= CurrentCoolTime)
+
+	if (CoolTime < CurrentCoolTime)
 	{
 		CoolTime = 0.f;
 		LastTime = 0.f;
+		CurrentCoolTime = 0.f;
 		attackflag = false;
 	}
 
 	//ˆê”Ô‹ß‚¢“G‚Æ‚Ì‹——£‚ðŽæ“¾‚·‚é
-	for (TActorIterator<AMyEnemy> it(GetWorld()); it; ++it)
-	{
-		if (enemyNum >= 2)
-		{
-			continue;
-		}
+	//for (TActorIterator<AMyEnemy> it(GetWorld()); it; ++it)
+	//{
+	//	if (enemyNum >= 2)
+	//	{
+	//		continue;
+	//	}
 
-		AMyEnemy* TargetEnemy = *it;
+	//	AMyEnemy* TargetEnemy = *it;
 
-		float vecBetweenDistance = FVector::Dist(TargetEnemy->GetActorLocation(), this->GetActorLocation());
+	//	float vecBetweenDistance = FVector::Dist(TargetEnemy->GetActorLocation(), this->GetActorLocation());
 
-		if (vecBetweenDistance < enemyDistance || enemyDistance == -1.f)
-		{
-			enemyDistance = vecBetweenDistance;
-			EnemyLocation = TargetEnemy->GetActorLocation();
-		}
-	}
+	//	if (vecBetweenDistance < enemyDistance || enemyDistance == -1.f)
+	//	{
+	//		enemyDistance = vecBetweenDistance;
+	//		EnemyLocation = TargetEnemy->GetActorLocation();
+	//	}
+	//}
 }
 
 void AMyCharacter::OnTestOverlapBegin(AActor* OtherActor, UPrimitiveComponent * OtherComponent, int32 OtherBodyIndex, bool bFromSweep, FHitResult & SweepResult)
@@ -172,107 +173,74 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 	PlayerInputComponent->BindAxis("MoveRightLeft", this, &AMyCharacter::MoveRightLeft);
 	PlayerInputComponent->BindAxis("MoveUpDown", this, &AMyCharacter::MoveUpDown);
-	//PlayerInputComponent->BindAxis("Attack", this, &AMyCharacter::Attack);
 
 	PlayerInputComponent->BindAction("Attack_Action", IE_Pressed, this, &AMyCharacter::Attack_Action);
+	PlayerInputComponent->BindAction("Attack_Action", IE_Released, this, &AMyCharacter::AttackEnd);
 }
 
 void AMyCharacter::MoveRightLeft(float Val)
 {
-	//if (!attackflag)
-	//{
-	//	AddMovementInput(FVector(0.f, -1.f, 0.f), Val);
-	//}
+	if (!attackflag)
+	{
+		AddMovementInput(FVector(0.f, -1.f, 0.f), Val);
+	}
 
-	AddMovementInput(FVector(0.f, -1.f, 0.f), Val);
+	//AddMovementInput(FVector(0.f, -1.f, 0.f), Val);
 }
 
 void AMyCharacter::MoveUpDown(float Val)
 {
-	//if (!attackflag)
-	//{
-	//	AddMovementInput(FVector(-1.f, 0.f, 0.f), Val);
-	//}
-
-	AddMovementInput(FVector(-1.f, 0.f, 0.f), Val);
-}
-
-void AMyCharacter::Attack(float val)
-{
-	float AttackSpeed = -3.f;
-	if (val >= 0.1f && CoolTime == 0)
+	if (!attackflag)
 	{
-		if (!attackflag)
-		{
-			attackflag = true;
-			LastTime = GetWorld()->GetTimeSeconds();//UŒ‚Žž‚ÌŽžŠÔ‚ðŽæ“¾
-			//GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor::Blue, FString::Printf(TEXT("%f"), LastTime));
-			CoolTime = 0.6f;
-		}
-		
-		if (enemyNum != 0)
-		{
-			FVector playerVec = this->GetActorLocation();
-
-			FVector vec = EnemyLocation - playerVec;
-
-			/*if (!ishit)
-			{
-				GetCharacterMovement()->MaxWalkSpeed = MaxWalkSpeed;
-			}
-			else
-			{
-				GetCharacterMovement()->MaxWalkSpeed = defaultWalkSpeed;
-			}*/
-
-			AddMovementInput(vec, 1);
-		}
+		AddMovementInput(FVector(-1.f, 0.f, 0.f), Val);
 	}
-	else
-	{
-		GetCharacterMovement()->MaxWalkSpeed = defaultWalkSpeed;
-		ishit = false;
-	}
+
+	//AddMovementInput(FVector(-1.f, 0.f, 0.f), Val);
 }
 
 void AMyCharacter::Attack_Action()
 {
-
-	//GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor::Red, TEXT("ABCD"));
-
 	float AttackSpeed = -3.f;
-	if (CoolTime == 0)
+
+	if (!attackflag && CoolTime == 0)
 	{
-		if (!attackflag)
-		{
-			attackflag = true;
-			LastTime = GetWorld()->GetTimeSeconds();//UŒ‚Žž‚ÌŽžŠÔ‚ðŽæ“¾
-			//GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor::Blue, FString::Printf(TEXT("%f"), LastTime));
-			CoolTime = 0.75f;
-		}
+		CoolTime = 0.7f;
+		attackflag = true;
+		LastTime = GetWorld()->GetTimeSeconds();//UŒ‚Žž‚ÌŽžŠÔ‚ðŽæ“¾
 
-		if (enemyNum != 0)
-		{
-			FVector playerVec = this->GetActorLocation();
 
-			FVector vec = EnemyLocation - playerVec;
+		//if (enemyNum != 0)
+		//{
+		//	FVector playerVec = this->GetActorLocation();
 
-			/*if (!ishit)
-			{
-				GetCharacterMovement()->MaxWalkSpeed = MaxWalkSpeed;
-			}
-			else
-			{
-				GetCharacterMovement()->MaxWalkSpeed = defaultWalkSpeed;
-			}*/
+		//	FVector vec = EnemyLocation - playerVec;
 
-			AddMovementInput(vec, 1);
-		}
+		//	//if (!ishit)
+		//	//{
+		//	//	GetCharacterMovement()->MaxWalkSpeed = MaxWalkSpeed;
+		//	//}
+		//	//else
+		//	//{
+		//	//	GetCharacterMovement()->MaxWalkSpeed = defaultWalkSpeed;
+		//	//}
+
+		//	AddMovementInput(vec, 1);
+		//}
 	}
-	/*else
-	{
-		GetCharacterMovement()->MaxWalkSpeed = defaultWalkSpeed;
-		ishit = false;
-	}*/
+	
+}
+
+void AMyCharacter::AttackEnd()
+{
+	//GetCharacterMovement()->MaxWalkSpeed = defaultWalkSpeed;
+	//ishit = false;
+
+	//if (CoolTime == 0)
+	//{
+	//	
+	//}
+	
+	//GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor::Blue, FString::Printf(TEXT("%f"), LastTime));
+	
 }
 
