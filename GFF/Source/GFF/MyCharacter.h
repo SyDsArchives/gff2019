@@ -84,9 +84,13 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "MyBPLibrary")
 	void OnTestOverlapBegin(class AActor* OtherActor, class UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex, bool bFromSweep, FHitResult& SweepResult);
-
 	UFUNCTION(BlueprintCallable, Category = "MyBPLibrary")
 	void OnTestOverlapEnd(class AActor* OtherActor, class UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex);
+
+	UFUNCTION(BlueprintCallable, Category = "MyBPLibrary")
+	void PunchBeginOverlap(class UPrimitiveComponent* OverlappedComponent,class AActor* OtherActor, class UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex, bool bFromSweep, FHitResult& SweepResult);
+	UFUNCTION(BlueprintCallable, Category = "MyBPLibrary")
+	void PunchEndOverlap(class UPrimitiveComponent* OverlappedComponent,class AActor* OtherActor, class UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex);
 
 	UFUNCTION(BlueprintCallable, Category = "MyBPLibrary")
 	bool GetIsAttack();

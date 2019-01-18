@@ -67,7 +67,18 @@ AMyCharacter::AMyCharacter():attackflag(false),MaxWalkSpeed(10000), defaultWalkS
 	FScriptDelegate DelegateEnd;
 	DelegateEnd.BindUFunction(this, "OnTestOverlapEnd");
 	EnemySearch->OnComponentEndOverlap.Add(DelegateEnd);
-	
+
+	PunchCollision = CreateDefaultSubobject<UBoxComponent>(TEXT("PunchCollision"));
+	PunchCollision->InitBoxExtent(FVector(20.f, 10.f, 10.f));
+	PunchCollision->SetupAttachment(GetRootComponent());
+	PunchCollision->SetHiddenInGame(false);
+	FScriptDelegate PunchDelegateBegin;
+	PunchDelegateBegin.BindUFunction(this, "PunchBeginOverlap");
+	PunchCollision->OnComponentBeginOverlap.Add(PunchDelegateBegin);
+	FScriptDelegate PunchDelegateEnd;
+	PunchDelegateEnd.BindUFunction(this, "PunchEndOverlap");
+	PunchCollision->OnComponentEndOverlap.Add(PunchDelegateEnd);
+
 	//CharacterMovement‚Ìİ’è
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 	GetCharacterMovement()->RotationRate = FRotator(0.0f, 720.0f, 0.0f);
@@ -106,12 +117,17 @@ void AMyCharacter::Tick(float DeltaTime)
 		GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor::Red, FString::Printf(TEXT("%f"), CurrentCoolTime));
 	}
 
-	if (CoolTime < CurrentCoolTime)
+	if (CoolTime <= CurrentCoolTime)
 	{
 		CoolTime = 0.f;
 		LastTime = 0.f;
 		CurrentCoolTime = 0.f;
 		attackflag = false;
+	}
+
+	if (!attackflag)
+	{
+		PunchCollision->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	}
 
 	//ˆê”Ô‹ß‚¢“G‚Æ‚Ì‹——£‚ğæ“¾‚·‚é
@@ -155,6 +171,18 @@ void AMyCharacter::OnTestOverlapEnd(AActor * OtherActor, UPrimitiveComponent * O
 		enemyDistance = -1;
 	}
 	
+}
+
+void AMyCharacter::PunchBeginOverlap(UPrimitiveComponent * OverlappedComponent, AActor * OtherActor, UPrimitiveComponent * OtherComponent, int32 OtherBodyIndex, bool bFromSweep, FHitResult & SweepResult)
+{
+	if (OtherComponent->ComponentHasTag("Enemy"))
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor::Blue, TEXT("Punch!!!!!"));
+	}
+}
+
+void AMyCharacter::PunchEndOverlap(UPrimitiveComponent * OverlappedComponent, AActor * OtherActor, UPrimitiveComponent * OtherComponent, int32 OtherBodyIndex)
+{
 }
 
 bool AMyCharacter::GetIsAttack()
@@ -204,10 +232,10 @@ void AMyCharacter::Attack_Action()
 
 	if (!attackflag && CoolTime == 0)
 	{
-		CoolTime = 0.7f;
+		CoolTime = 0.68f;
 		attackflag = true;
+		PunchCollision->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);//AttackFlag‚ğtrue‚É‚µ‚½Œã‚ÉCollision‚ğ’Ç‰Á‚·‚é
 		LastTime = GetWorld()->GetTimeSeconds();//UŒ‚‚ÌŠÔ‚ğæ“¾
-
 
 		//if (enemyNum != 0)
 		//{
