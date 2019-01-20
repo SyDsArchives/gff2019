@@ -17,8 +17,6 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 	GFF_API UClass* Z_Construct_UClass_AMyCharacter();
 	ENGINE_API UClass* Z_Construct_UClass_ACharacter();
 	UPackage* Z_Construct_UPackage__Script_GFF();
-	GFF_API UFunction* Z_Construct_UFunction_AMyCharacter_AttackInertia();
-	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 	GFF_API UFunction* Z_Construct_UFunction_AMyCharacter_GetIsAttack();
 	GFF_API UFunction* Z_Construct_UFunction_AMyCharacter_GetIsCombatRange();
 	GFF_API UFunction* Z_Construct_UFunction_AMyCharacter_OnTestOverlapBegin();
@@ -37,7 +35,6 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 	{
 		UClass* Class = AMyCharacter::StaticClass();
 		static const FNameNativePtrPair Funcs[] = {
-			{ "AttackInertia", &AMyCharacter::execAttackInertia },
 			{ "GetIsAttack", &AMyCharacter::execGetIsAttack },
 			{ "GetIsCombatRange", &AMyCharacter::execGetIsCombatRange },
 			{ "OnTestOverlapBegin", &AMyCharacter::execOnTestOverlapBegin },
@@ -47,39 +44,6 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 			{ "SetIsAttack", &AMyCharacter::execSetIsAttack },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, ARRAY_COUNT(Funcs));
-	}
-	struct Z_Construct_UFunction_AMyCharacter_AttackInertia_Statics
-	{
-		struct MyCharacter_eventAttackInertia_Parms
-		{
-			FVector AttackDirection;
-		};
-		static const UE4CodeGen_Private::FStructPropertyParams NewProp_AttackDirection;
-		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
-#if WITH_METADATA
-		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
-#endif
-		static const UE4CodeGen_Private::FFunctionParams FuncParams;
-	};
-	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UFunction_AMyCharacter_AttackInertia_Statics::NewProp_AttackDirection = { UE4CodeGen_Private::EPropertyClass::Struct, "AttackDirection", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0010000000000080, 1, nullptr, STRUCT_OFFSET(MyCharacter_eventAttackInertia_Parms, AttackDirection), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(nullptr, 0) };
-	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AMyCharacter_AttackInertia_Statics::PropPointers[] = {
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AMyCharacter_AttackInertia_Statics::NewProp_AttackDirection,
-	};
-#if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AMyCharacter_AttackInertia_Statics::Function_MetaDataParams[] = {
-		{ "Category", "MyBPLibrary" },
-		{ "ModuleRelativePath", "MyCharacter.h" },
-	};
-#endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AMyCharacter_AttackInertia_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AMyCharacter, "AttackInertia", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x04820401, sizeof(MyCharacter_eventAttackInertia_Parms), Z_Construct_UFunction_AMyCharacter_AttackInertia_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_AMyCharacter_AttackInertia_Statics::PropPointers), 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AMyCharacter_AttackInertia_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_AMyCharacter_AttackInertia_Statics::Function_MetaDataParams)) };
-	UFunction* Z_Construct_UFunction_AMyCharacter_AttackInertia()
-	{
-		static UFunction* ReturnFunction = nullptr;
-		if (!ReturnFunction)
-		{
-			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AMyCharacter_AttackInertia_Statics::FuncParams);
-		}
-		return ReturnFunction;
 	}
 	struct Z_Construct_UFunction_AMyCharacter_GetIsAttack_Statics
 	{
@@ -516,7 +480,6 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 		(UObject* (*)())Z_Construct_UPackage__Script_GFF,
 	};
 	const FClassFunctionLinkInfo Z_Construct_UClass_AMyCharacter_Statics::FuncInfo[] = {
-		{ &Z_Construct_UFunction_AMyCharacter_AttackInertia, "AttackInertia" }, // 929438649
 		{ &Z_Construct_UFunction_AMyCharacter_GetIsAttack, "GetIsAttack" }, // 1663883899
 		{ &Z_Construct_UFunction_AMyCharacter_GetIsCombatRange, "GetIsCombatRange" }, // 156161944
 		{ &Z_Construct_UFunction_AMyCharacter_OnTestOverlapBegin, "OnTestOverlapBegin" }, // 2947200575
@@ -607,6 +570,7 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 		{ "Category", "Attack" },
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "MyCharacter.h" },
+		{ "ToolTip", "?U??????" },
 	};
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMyCharacter_Statics::NewProp_LeftPunchCollision = { UE4CodeGen_Private::EPropertyClass::Object, "LeftPunchCollision", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x00400000000a001d, 1, nullptr, STRUCT_OFFSET(AMyCharacter, LeftPunchCollision), Z_Construct_UClass_UBoxComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AMyCharacter_Statics::NewProp_LeftPunchCollision_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMyCharacter_Statics::NewProp_LeftPunchCollision_MetaData)) };
@@ -616,6 +580,7 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 		{ "Category", "Attack" },
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "MyCharacter.h" },
+		{ "ToolTip", "???G?\xcd\x88?" },
 	};
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMyCharacter_Statics::NewProp_RightPunchCollision = { UE4CodeGen_Private::EPropertyClass::Object, "RightPunchCollision", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x00400000000a001d, 1, nullptr, STRUCT_OFFSET(AMyCharacter, RightPunchCollision), Z_Construct_UClass_UBoxComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AMyCharacter_Statics::NewProp_RightPunchCollision_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMyCharacter_Statics::NewProp_RightPunchCollision_MetaData)) };
@@ -625,6 +590,7 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 		{ "Category", "Attack" },
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "MyCharacter.h" },
+		{ "ToolTip", "?X?v?????O?A?[??" },
 	};
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMyCharacter_Statics::NewProp_EnemySearch = { UE4CodeGen_Private::EPropertyClass::Object, "EnemySearch", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x00400000000a001d, 1, nullptr, STRUCT_OFFSET(AMyCharacter, EnemySearch), Z_Construct_UClass_UBoxComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AMyCharacter_Statics::NewProp_EnemySearch_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMyCharacter_Statics::NewProp_EnemySearch_MetaData)) };
@@ -634,7 +600,7 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 		{ "Category", "Camera" },
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "MyCharacter.h" },
-		{ "ToolTip", "Camera boom positioning the camera beside the character" },
+		{ "ToolTip", "?J?????R???|?[?l???g" },
 	};
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMyCharacter_Statics::NewProp_CameraBoom = { UE4CodeGen_Private::EPropertyClass::Object, "CameraBoom", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x00400000000a001d, 1, nullptr, STRUCT_OFFSET(AMyCharacter, CameraBoom), Z_Construct_UClass_USpringArmComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AMyCharacter_Statics::NewProp_CameraBoom_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMyCharacter_Statics::NewProp_CameraBoom_MetaData)) };
@@ -644,7 +610,6 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 		{ "Category", "Camera" },
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "MyCharacter.h" },
-		{ "ToolTip", "Side view camera" },
 	};
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMyCharacter_Statics::NewProp_SideViewCameraComponent = { UE4CodeGen_Private::EPropertyClass::Object, "SideViewCameraComponent", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x00400000000a001d, 1, nullptr, STRUCT_OFFSET(AMyCharacter, SideViewCameraComponent), Z_Construct_UClass_UCameraComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AMyCharacter_Statics::NewProp_SideViewCameraComponent_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMyCharacter_Statics::NewProp_SideViewCameraComponent_MetaData)) };
@@ -686,7 +651,7 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AMyCharacter, 545160724);
+	IMPLEMENT_CLASS(AMyCharacter, 3191394979);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_AMyCharacter(Z_Construct_UClass_AMyCharacter, &AMyCharacter::StaticClass, TEXT("/Script/GFF"), TEXT("AMyCharacter"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(AMyCharacter);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

@@ -14,30 +14,31 @@ class GFF_API AMyCharacter : public ACharacter
 {
 	GENERATED_BODY()
 
-	/** Side view camera */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
-	class UCameraComponent* SideViewCameraComponent;
-
-	/** Camera boom positioning the camera beside the character */
+	class UCameraComponent* SideViewCameraComponent;//カメラコンポーネント
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
-	class USpringArmComponent* CameraBoom;
-
+	class USpringArmComponent* CameraBoom;//スプリングアーム
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Attack, meta = (AllowPrivateAccess = "true"))
-	class UBoxComponent* EnemySearch;
-
+	class UBoxComponent* EnemySearch;//索敵範囲
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Attack, meta = (AllowPrivateAccess = "true"))
-	class UBoxComponent* RightPunchCollision;
-
+	class UBoxComponent* RightPunchCollision;//攻撃判定
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Attack, meta = (AllowPrivateAccess = "true"))
-	class UBoxComponent* LeftPunchCollision;
+	class UBoxComponent* LeftPunchCollision;//攻撃判定
 
 	FVector EnemyLocation;
 	
 	float LastTime;
-
 	float CurrentCoolTime;
-
 	float CoolTime;
+
+	//生存している敵の中でプレイヤーに一番近い敵を探す
+	void SearchEnemy();
+
+	//攻撃後のプレイヤーのクールタイム関係を処理する
+	void PlayerAttackCoolTime();
+
+	//一番近い敵に近づく
+	void ApproachEnemy();
 
 protected:
 
@@ -101,11 +102,7 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "MyBPLibrary")
 	void SetIsAttack(bool _IsAttack);
 
-	
-
 	UFUNCTION(BlueprintCallable, Category = "MyBPLibrary")
 	bool GetIsCombatRange();
 
-	UFUNCTION(BlueprintCallable, Category = "MyBPLibrary")
-	void AttackInertia(FVector AttackDirection);
 };

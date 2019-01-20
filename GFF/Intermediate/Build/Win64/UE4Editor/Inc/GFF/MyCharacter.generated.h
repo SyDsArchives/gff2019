@@ -8,7 +8,6 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-struct FVector;
 class UPrimitiveComponent;
 class AActor;
 struct FHitResult;
@@ -18,15 +17,6 @@ struct FHitResult;
 #define GFF_MyCharacter_generated_h
 
 #define GFF_Source_GFF_MyCharacter_h_15_RPC_WRAPPERS \
- \
-	DECLARE_FUNCTION(execAttackInertia) \
-	{ \
-		P_GET_STRUCT(FVector,Z_Param_AttackDirection); \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		P_THIS->AttackInertia(Z_Param_AttackDirection); \
-		P_NATIVE_END; \
-	} \
  \
 	DECLARE_FUNCTION(execGetIsCombatRange) \
 	{ \
@@ -105,15 +95,6 @@ struct FHitResult;
 
 
 #define GFF_Source_GFF_MyCharacter_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
- \
-	DECLARE_FUNCTION(execAttackInertia) \
-	{ \
-		P_GET_STRUCT(FVector,Z_Param_AttackDirection); \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		P_THIS->AttackInertia(Z_Param_AttackDirection); \
-		P_NATIVE_END; \
-	} \
  \
 	DECLARE_FUNCTION(execGetIsCombatRange) \
 	{ \
