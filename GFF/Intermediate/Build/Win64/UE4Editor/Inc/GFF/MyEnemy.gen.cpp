@@ -341,6 +341,10 @@ void EmptyLinkFunctionForGeneratedCodeMyEnemy() {}
 		static const UE4CodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
 #if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_DamageCount_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_DamageCount;
+#if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_BeforeVitality_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_BeforeVitality;
@@ -382,6 +386,13 @@ void EmptyLinkFunctionForGeneratedCodeMyEnemy() {}
 	};
 #endif
 #if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMyEnemy_Statics::NewProp_DamageCount_MetaData[] = {
+		{ "Category", "MyEnemy" },
+		{ "ModuleRelativePath", "MyEnemy.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UClass_AMyEnemy_Statics::NewProp_DamageCount = { UE4CodeGen_Private::EPropertyClass::Int, "DamageCount", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0020080000000005, 1, nullptr, STRUCT_OFFSET(AMyEnemy, DamageCount), METADATA_PARAMS(Z_Construct_UClass_AMyEnemy_Statics::NewProp_DamageCount_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMyEnemy_Statics::NewProp_DamageCount_MetaData)) };
+#if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMyEnemy_Statics::NewProp_BeforeVitality_MetaData[] = {
 		{ "Category", "MyEnemy" },
 		{ "ModuleRelativePath", "MyEnemy.h" },
@@ -418,6 +429,7 @@ void EmptyLinkFunctionForGeneratedCodeMyEnemy() {}
 	}
 	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AMyEnemy_Statics::NewProp_IsDamaged = { UE4CodeGen_Private::EPropertyClass::Bool, "IsDamaged", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0020080000000005, 1, nullptr, sizeof(bool), UE4CodeGen_Private::ENativeBool::Native, sizeof(AMyEnemy), &Z_Construct_UClass_AMyEnemy_Statics::NewProp_IsDamaged_SetBit, METADATA_PARAMS(Z_Construct_UClass_AMyEnemy_Statics::NewProp_IsDamaged_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMyEnemy_Statics::NewProp_IsDamaged_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AMyEnemy_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyEnemy_Statics::NewProp_DamageCount,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyEnemy_Statics::NewProp_BeforeVitality,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyEnemy_Statics::NewProp_Vitality,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyEnemy_Statics::NewProp_IsDead,
@@ -446,7 +458,7 @@ void EmptyLinkFunctionForGeneratedCodeMyEnemy() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AMyEnemy, 1562815409);
+	IMPLEMENT_CLASS(AMyEnemy, 1207464577);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_AMyEnemy(Z_Construct_UClass_AMyEnemy, &AMyEnemy::StaticClass, TEXT("/Script/GFF"), TEXT("AMyEnemy"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(AMyEnemy);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

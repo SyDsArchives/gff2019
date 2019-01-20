@@ -2,11 +2,13 @@
 
 #include "MyEnemy.h"
 #include "Components/CapsuleComponent.h"
-//#include "Runtime/Engine/Classes/Engine/Engine.h"
+#include "Runtime/Engine/Classes/GameFramework/CharacterMovementComponent.h"
+#include "Runtime/Engine/Classes/Engine/Engine.h"
 
 // Sets default values
-AMyEnemy::AMyEnemy():isFound(false), IsDamaged(false), IsDead(false),
-InvincibleTime(0), Vitality(10), BeforeVitality(10)
+AMyEnemy::AMyEnemy():isFound(false), IsDamaged(false), IsDead(false), IsKnockBack(false),
+InvincibleTime(0), Vitality(10), BeforeVitality(10), DamageCount(0),
+PlayerVec(nullptr)
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -19,13 +21,14 @@ InvincibleTime(0), Vitality(10), BeforeVitality(10)
 	DelegateBegin.BindUFunction(this, "OnEndOverlap");
 	GetCapsuleComponent()->OnComponentEndOverlap.Add(DelegateEnd);
 
+	GetCharacterMovement()->bOrientRotationToMovement = 1;
+
 }
 
 // Called when the game starts or when spawned
 void AMyEnemy::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
 // Called every frame
@@ -38,12 +41,26 @@ void AMyEnemy::Tick(float DeltaTime)
 		if (--InvincibleTime <= 0)
 		{
 			IsDamaged = false;
+			DamageCount = 0;
 		}
 	}
 
 	if (Vitality <= 0)
 	{
 		IsDead = true;
+	}
+
+	if (IsDamaged && DamageCount == 3)
+	{
+		GetCharacterMovement()->bOrientRotationToMovement = 0;
+		FVector vec = GetActorForwardVector();
+		vec = vec * FVector(-1, -1, -1);
+		vec = vec * FVector(10000, 10000, 10000);
+		AddMovementInput(vec, 1.f);
+	}
+	else if(GetCharacterMovement()->bOrientRotationToMovement != 1)
+	{
+		GetCharacterMovement()->bOrientRotationToMovement = 1;
 	}
 }
 
@@ -82,9 +99,10 @@ void AMyEnemy::OnBeginOverlap(UPrimitiveComponent * OverlapComponent, AActor * O
 
 		IsDamaged = true;
 
+		++DamageCount;
 		--Vitality;
 
-		InvincibleTime = 10;
+		InvincibleTime = 50;
 	}
 }
 

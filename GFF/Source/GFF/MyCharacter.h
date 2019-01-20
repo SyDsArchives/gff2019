@@ -61,7 +61,7 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool InitMoveLimit;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		bool ishit;
+		bool IsCombatRange;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		float MaxWalkSpeed;
@@ -101,8 +101,10 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "MyBPLibrary")
 	void SetIsAttack(bool _IsAttack);
 
+	
+
 	UFUNCTION(BlueprintCallable, Category = "MyBPLibrary")
-	bool GetIsHit();
+	bool GetIsCombatRange();
 
 	UFUNCTION(BlueprintCallable, Category = "MyBPLibrary")
 	void AttackInertia(FVector AttackDirection);

@@ -20,7 +20,7 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 	GFF_API UFunction* Z_Construct_UFunction_AMyCharacter_AttackInertia();
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 	GFF_API UFunction* Z_Construct_UFunction_AMyCharacter_GetIsAttack();
-	GFF_API UFunction* Z_Construct_UFunction_AMyCharacter_GetIsHit();
+	GFF_API UFunction* Z_Construct_UFunction_AMyCharacter_GetIsCombatRange();
 	GFF_API UFunction* Z_Construct_UFunction_AMyCharacter_OnTestOverlapBegin();
 	ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FHitResult();
 	ENGINE_API UClass* Z_Construct_UClass_UPrimitiveComponent_NoRegister();
@@ -39,7 +39,7 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 		static const FNameNativePtrPair Funcs[] = {
 			{ "AttackInertia", &AMyCharacter::execAttackInertia },
 			{ "GetIsAttack", &AMyCharacter::execGetIsAttack },
-			{ "GetIsHit", &AMyCharacter::execGetIsHit },
+			{ "GetIsCombatRange", &AMyCharacter::execGetIsCombatRange },
 			{ "OnTestOverlapBegin", &AMyCharacter::execOnTestOverlapBegin },
 			{ "OnTestOverlapEnd", &AMyCharacter::execOnTestOverlapEnd },
 			{ "PunchBeginOverlap", &AMyCharacter::execPunchBeginOverlap },
@@ -119,9 +119,9 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 		}
 		return ReturnFunction;
 	}
-	struct Z_Construct_UFunction_AMyCharacter_GetIsHit_Statics
+	struct Z_Construct_UFunction_AMyCharacter_GetIsCombatRange_Statics
 	{
-		struct MyCharacter_eventGetIsHit_Parms
+		struct MyCharacter_eventGetIsCombatRange_Parms
 		{
 			bool ReturnValue;
 		};
@@ -133,27 +133,27 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 #endif
 		static const UE4CodeGen_Private::FFunctionParams FuncParams;
 	};
-	void Z_Construct_UFunction_AMyCharacter_GetIsHit_Statics::NewProp_ReturnValue_SetBit(void* Obj)
+	void Z_Construct_UFunction_AMyCharacter_GetIsCombatRange_Statics::NewProp_ReturnValue_SetBit(void* Obj)
 	{
-		((MyCharacter_eventGetIsHit_Parms*)Obj)->ReturnValue = 1;
+		((MyCharacter_eventGetIsCombatRange_Parms*)Obj)->ReturnValue = 1;
 	}
-	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_AMyCharacter_GetIsHit_Statics::NewProp_ReturnValue = { UE4CodeGen_Private::EPropertyClass::Bool, "ReturnValue", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0010000000000580, 1, nullptr, sizeof(bool), UE4CodeGen_Private::ENativeBool::Native, sizeof(MyCharacter_eventGetIsHit_Parms), &Z_Construct_UFunction_AMyCharacter_GetIsHit_Statics::NewProp_ReturnValue_SetBit, METADATA_PARAMS(nullptr, 0) };
-	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AMyCharacter_GetIsHit_Statics::PropPointers[] = {
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AMyCharacter_GetIsHit_Statics::NewProp_ReturnValue,
+	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_AMyCharacter_GetIsCombatRange_Statics::NewProp_ReturnValue = { UE4CodeGen_Private::EPropertyClass::Bool, "ReturnValue", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0010000000000580, 1, nullptr, sizeof(bool), UE4CodeGen_Private::ENativeBool::Native, sizeof(MyCharacter_eventGetIsCombatRange_Parms), &Z_Construct_UFunction_AMyCharacter_GetIsCombatRange_Statics::NewProp_ReturnValue_SetBit, METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AMyCharacter_GetIsCombatRange_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AMyCharacter_GetIsCombatRange_Statics::NewProp_ReturnValue,
 	};
 #if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AMyCharacter_GetIsHit_Statics::Function_MetaDataParams[] = {
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AMyCharacter_GetIsCombatRange_Statics::Function_MetaDataParams[] = {
 		{ "Category", "MyBPLibrary" },
 		{ "ModuleRelativePath", "MyCharacter.h" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AMyCharacter_GetIsHit_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AMyCharacter, "GetIsHit", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x04020401, sizeof(MyCharacter_eventGetIsHit_Parms), Z_Construct_UFunction_AMyCharacter_GetIsHit_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_AMyCharacter_GetIsHit_Statics::PropPointers), 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AMyCharacter_GetIsHit_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_AMyCharacter_GetIsHit_Statics::Function_MetaDataParams)) };
-	UFunction* Z_Construct_UFunction_AMyCharacter_GetIsHit()
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AMyCharacter_GetIsCombatRange_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AMyCharacter, "GetIsCombatRange", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x04020401, sizeof(MyCharacter_eventGetIsCombatRange_Parms), Z_Construct_UFunction_AMyCharacter_GetIsCombatRange_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_AMyCharacter_GetIsCombatRange_Statics::PropPointers), 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AMyCharacter_GetIsCombatRange_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_AMyCharacter_GetIsCombatRange_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_AMyCharacter_GetIsCombatRange()
 	{
 		static UFunction* ReturnFunction = nullptr;
 		if (!ReturnFunction)
 		{
-			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AMyCharacter_GetIsHit_Statics::FuncParams);
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AMyCharacter_GetIsCombatRange_Statics::FuncParams);
 		}
 		return ReturnFunction;
 	}
@@ -473,10 +473,10 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 #endif
 		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_MaxWalkSpeed;
 #if WITH_METADATA
-		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_ishit_MetaData[];
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_IsCombatRange_MetaData[];
 #endif
-		static void NewProp_ishit_SetBit(void* Obj);
-		static const UE4CodeGen_Private::FBoolPropertyParams NewProp_ishit;
+		static void NewProp_IsCombatRange_SetBit(void* Obj);
+		static const UE4CodeGen_Private::FBoolPropertyParams NewProp_IsCombatRange;
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_InitMoveLimit_MetaData[];
 #endif
@@ -518,7 +518,7 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 	const FClassFunctionLinkInfo Z_Construct_UClass_AMyCharacter_Statics::FuncInfo[] = {
 		{ &Z_Construct_UFunction_AMyCharacter_AttackInertia, "AttackInertia" }, // 929438649
 		{ &Z_Construct_UFunction_AMyCharacter_GetIsAttack, "GetIsAttack" }, // 1663883899
-		{ &Z_Construct_UFunction_AMyCharacter_GetIsHit, "GetIsHit" }, // 4094972655
+		{ &Z_Construct_UFunction_AMyCharacter_GetIsCombatRange, "GetIsCombatRange" }, // 156161944
 		{ &Z_Construct_UFunction_AMyCharacter_OnTestOverlapBegin, "OnTestOverlapBegin" }, // 2947200575
 		{ &Z_Construct_UFunction_AMyCharacter_OnTestOverlapEnd, "OnTestOverlapEnd" }, // 2757193145
 		{ &Z_Construct_UFunction_AMyCharacter_PunchBeginOverlap, "PunchBeginOverlap" }, // 378750659
@@ -569,16 +569,16 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 #endif
 	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AMyCharacter_Statics::NewProp_MaxWalkSpeed = { UE4CodeGen_Private::EPropertyClass::Float, "MaxWalkSpeed", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0020080000000005, 1, nullptr, STRUCT_OFFSET(AMyCharacter, MaxWalkSpeed), METADATA_PARAMS(Z_Construct_UClass_AMyCharacter_Statics::NewProp_MaxWalkSpeed_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMyCharacter_Statics::NewProp_MaxWalkSpeed_MetaData)) };
 #if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMyCharacter_Statics::NewProp_ishit_MetaData[] = {
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMyCharacter_Statics::NewProp_IsCombatRange_MetaData[] = {
 		{ "Category", "MyCharacter" },
 		{ "ModuleRelativePath", "MyCharacter.h" },
 	};
 #endif
-	void Z_Construct_UClass_AMyCharacter_Statics::NewProp_ishit_SetBit(void* Obj)
+	void Z_Construct_UClass_AMyCharacter_Statics::NewProp_IsCombatRange_SetBit(void* Obj)
 	{
-		((AMyCharacter*)Obj)->ishit = 1;
+		((AMyCharacter*)Obj)->IsCombatRange = 1;
 	}
-	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AMyCharacter_Statics::NewProp_ishit = { UE4CodeGen_Private::EPropertyClass::Bool, "ishit", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0020080000000005, 1, nullptr, sizeof(bool), UE4CodeGen_Private::ENativeBool::Native, sizeof(AMyCharacter), &Z_Construct_UClass_AMyCharacter_Statics::NewProp_ishit_SetBit, METADATA_PARAMS(Z_Construct_UClass_AMyCharacter_Statics::NewProp_ishit_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMyCharacter_Statics::NewProp_ishit_MetaData)) };
+	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AMyCharacter_Statics::NewProp_IsCombatRange = { UE4CodeGen_Private::EPropertyClass::Bool, "IsCombatRange", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0020080000000005, 1, nullptr, sizeof(bool), UE4CodeGen_Private::ENativeBool::Native, sizeof(AMyCharacter), &Z_Construct_UClass_AMyCharacter_Statics::NewProp_IsCombatRange_SetBit, METADATA_PARAMS(Z_Construct_UClass_AMyCharacter_Statics::NewProp_IsCombatRange_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMyCharacter_Statics::NewProp_IsCombatRange_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMyCharacter_Statics::NewProp_InitMoveLimit_MetaData[] = {
 		{ "Category", "MyCharacter" },
@@ -654,7 +654,7 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyCharacter_Statics::NewProp_enemyDistance,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyCharacter_Statics::NewProp_defaultWalkSpeed,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyCharacter_Statics::NewProp_MaxWalkSpeed,
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyCharacter_Statics::NewProp_ishit,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyCharacter_Statics::NewProp_IsCombatRange,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyCharacter_Statics::NewProp_InitMoveLimit,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyCharacter_Statics::NewProp_attackflag,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyCharacter_Statics::NewProp_LeftPunchCollision,
@@ -686,7 +686,7 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AMyCharacter, 1361205373);
+	IMPLEMENT_CLASS(AMyCharacter, 545160724);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_AMyCharacter(Z_Construct_UClass_AMyCharacter, &AMyCharacter::StaticClass, TEXT("/Script/GFF"), TEXT("AMyCharacter"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(AMyCharacter);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

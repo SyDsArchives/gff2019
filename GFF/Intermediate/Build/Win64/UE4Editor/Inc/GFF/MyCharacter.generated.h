@@ -28,11 +28,11 @@ struct FHitResult;
 		P_NATIVE_END; \
 	} \
  \
-	DECLARE_FUNCTION(execGetIsHit) \
+	DECLARE_FUNCTION(execGetIsCombatRange) \
 	{ \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
-		*(bool*)Z_Param__Result=P_THIS->GetIsHit(); \
+		*(bool*)Z_Param__Result=P_THIS->GetIsCombatRange(); \
 		P_NATIVE_END; \
 	} \
  \
@@ -115,11 +115,11 @@ struct FHitResult;
 		P_NATIVE_END; \
 	} \
  \
-	DECLARE_FUNCTION(execGetIsHit) \
+	DECLARE_FUNCTION(execGetIsCombatRange) \
 	{ \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
-		*(bool*)Z_Param__Result=P_THIS->GetIsHit(); \
+		*(bool*)Z_Param__Result=P_THIS->GetIsCombatRange(); \
 		P_NATIVE_END; \
 	} \
  \
@@ -241,7 +241,7 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AMyCharacter); \
 	FORCEINLINE static uint32 __PPO__LeftPunchCollision() { return STRUCT_OFFSET(AMyCharacter, LeftPunchCollision); } \
 	FORCEINLINE static uint32 __PPO__attackflag() { return STRUCT_OFFSET(AMyCharacter, attackflag); } \
 	FORCEINLINE static uint32 __PPO__InitMoveLimit() { return STRUCT_OFFSET(AMyCharacter, InitMoveLimit); } \
-	FORCEINLINE static uint32 __PPO__ishit() { return STRUCT_OFFSET(AMyCharacter, ishit); } \
+	FORCEINLINE static uint32 __PPO__IsCombatRange() { return STRUCT_OFFSET(AMyCharacter, IsCombatRange); } \
 	FORCEINLINE static uint32 __PPO__MaxWalkSpeed() { return STRUCT_OFFSET(AMyCharacter, MaxWalkSpeed); } \
 	FORCEINLINE static uint32 __PPO__defaultWalkSpeed() { return STRUCT_OFFSET(AMyCharacter, defaultWalkSpeed); } \
 	FORCEINLINE static uint32 __PPO__enemyDistance() { return STRUCT_OFFSET(AMyCharacter, enemyDistance); } \

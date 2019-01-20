@@ -24,7 +24,8 @@
 
 
 // Sets default values
-AMyCharacter::AMyCharacter():attackflag(false), IsMoveAttack(false), InitMoveLimit(true), MaxWalkSpeed(10000), defaultWalkSpeed(500), LastTime(0), CurrentCoolTime(0), CoolTime(0)//,SaveAttack(false)
+AMyCharacter::AMyCharacter():attackflag(false), IsMoveAttack(false), InitMoveLimit(true), IsCombatRange(false),
+MaxWalkSpeed(10000.f), defaultWalkSpeed(500.f), LastTime(0.f), CurrentCoolTime(0.f), CoolTime(0.f)
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -102,8 +103,6 @@ AMyCharacter::AMyCharacter():attackflag(false), IsMoveAttack(false), InitMoveLim
 	GetCharacterMovement()->MaxWalkSpeed = 500;//defaultWalkSpeedŽQÆ
 	GetCharacterMovement()->MaxFlySpeed = 600.f;
 
-	ishit = false;//‰¼‚Å“G‚Ì“–‚½‚è”»’è‚ðŽæ“¾
-
 	enemyDistance = -1.f;
 	enemyNum = 0;
 }
@@ -169,7 +168,7 @@ void AMyCharacter::Tick(float DeltaTime)
 		IsMoveAttack = false;
 	}
 
-	if (IsMoveAttack)
+	if (IsMoveAttack && !IsCombatRange)
 	{
 		FVector playerVec = this->GetActorLocation();
 		FVector vec = EnemyLocation - playerVec;
@@ -224,9 +223,9 @@ void AMyCharacter::SetIsAttack(bool _IsAttack)
 	attackflag = _IsAttack;
 }
 
-bool AMyCharacter::GetIsHit()
+bool AMyCharacter::GetIsCombatRange()
 {
-	return ishit;
+	return IsCombatRange;
 }
 
 void AMyCharacter::AttackInertia(FVector AttackDirection)

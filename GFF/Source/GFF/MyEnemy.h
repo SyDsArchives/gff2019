@@ -17,9 +17,9 @@ protected:
 
 	bool isFound;
 
+	bool IsKnockBack;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool IsDamaged;
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool IsDead;
 
@@ -27,8 +27,12 @@ protected:
 	int Vitality;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int BeforeVitality;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int DamageCount;
 
 	int InvincibleTime;
+
+	FVector* PlayerVec;
 
 public:	
 	AMyEnemy();

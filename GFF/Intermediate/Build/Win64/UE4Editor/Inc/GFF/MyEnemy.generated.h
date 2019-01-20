@@ -186,7 +186,8 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AMyEnemy); \
 	FORCEINLINE static uint32 __PPO__IsDamaged() { return STRUCT_OFFSET(AMyEnemy, IsDamaged); } \
 	FORCEINLINE static uint32 __PPO__IsDead() { return STRUCT_OFFSET(AMyEnemy, IsDead); } \
 	FORCEINLINE static uint32 __PPO__Vitality() { return STRUCT_OFFSET(AMyEnemy, Vitality); } \
-	FORCEINLINE static uint32 __PPO__BeforeVitality() { return STRUCT_OFFSET(AMyEnemy, BeforeVitality); }
+	FORCEINLINE static uint32 __PPO__BeforeVitality() { return STRUCT_OFFSET(AMyEnemy, BeforeVitality); } \
+	FORCEINLINE static uint32 __PPO__DamageCount() { return STRUCT_OFFSET(AMyEnemy, DamageCount); }
 
 
 #define GFF_Source_GFF_MyEnemy_h_9_PROLOG
