@@ -26,7 +26,10 @@ class GFF_API AMyCharacter : public ACharacter
 	class UBoxComponent* EnemySearch;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Attack, meta = (AllowPrivateAccess = "true"))
-	class UBoxComponent* PunchCollision;
+	class UBoxComponent* RightPunchCollision;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Attack, meta = (AllowPrivateAccess = "true"))
+	class UBoxComponent* LeftPunchCollision;
 
 	FVector EnemyLocation;
 	
@@ -44,7 +47,6 @@ protected:
 	/** Called for side to side input */
 	void MoveRightLeft(float Val);
 	void MoveUpDown(float Val);
-	void Attack(float val);
 
 	void Attack_Action();
 	void AttackEnd();
@@ -53,23 +55,25 @@ protected:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	// End of APawn interface
 
+	bool IsMoveAttack;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool attackflag;
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		float MaxWalkSpeed;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		float defaultWalkSpeed;
-
+		bool InitMoveLimit;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool ishit;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float MaxWalkSpeed;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float defaultWalkSpeed;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		float enemyDistance;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		int enemyNum;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		int ComboAttack;
 
 public:	
 
@@ -94,7 +98,12 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "MyBPLibrary")
 	bool GetIsAttack();
+	UFUNCTION(BlueprintCallable, Category = "MyBPLibrary")
+	void SetIsAttack(bool _IsAttack);
 
 	UFUNCTION(BlueprintCallable, Category = "MyBPLibrary")
 	bool GetIsHit();
+
+	UFUNCTION(BlueprintCallable, Category = "MyBPLibrary")
+	void AttackInertia(FVector AttackDirection);
 };

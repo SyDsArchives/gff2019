@@ -24,7 +24,7 @@
 
 
 // Sets default values
-AMyCharacter::AMyCharacter():attackflag(false),MaxWalkSpeed(10000), defaultWalkSpeed(500), LastTime(0), CurrentCoolTime(0), CoolTime(0)
+AMyCharacter::AMyCharacter():attackflag(false), IsMoveAttack(false), InitMoveLimit(true), MaxWalkSpeed(10000), defaultWalkSpeed(500), LastTime(0), CurrentCoolTime(0), CoolTime(0)//,SaveAttack(false)
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -68,16 +68,29 @@ AMyCharacter::AMyCharacter():attackflag(false),MaxWalkSpeed(10000), defaultWalkS
 	DelegateEnd.BindUFunction(this, "OnTestOverlapEnd");
 	EnemySearch->OnComponentEndOverlap.Add(DelegateEnd);
 
-	PunchCollision = CreateDefaultSubobject<UBoxComponent>(TEXT("PunchCollision"));
-	PunchCollision->InitBoxExtent(FVector(20.f, 10.f, 10.f));
-	PunchCollision->SetupAttachment(GetRootComponent());
-	PunchCollision->SetHiddenInGame(false);
-	FScriptDelegate PunchDelegateBegin;
-	PunchDelegateBegin.BindUFunction(this, "PunchBeginOverlap");
-	PunchCollision->OnComponentBeginOverlap.Add(PunchDelegateBegin);
-	FScriptDelegate PunchDelegateEnd;
-	PunchDelegateEnd.BindUFunction(this, "PunchEndOverlap");
-	PunchCollision->OnComponentEndOverlap.Add(PunchDelegateEnd);
+	RightPunchCollision = CreateDefaultSubobject<UBoxComponent>(TEXT("RightPunchCollision"));
+	RightPunchCollision->InitBoxExtent(FVector(20.f, 10.f, 10.f));
+	RightPunchCollision->SetupAttachment(GetRootComponent());
+	RightPunchCollision->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	RightPunchCollision->SetHiddenInGame(false);
+	FScriptDelegate RightPunchDelegateBegin;
+	RightPunchDelegateBegin.BindUFunction(this, "PunchBeginOverlap");
+	RightPunchCollision->OnComponentBeginOverlap.Add(RightPunchDelegateBegin);
+	FScriptDelegate RightPunchDelegateEnd;
+	RightPunchDelegateBegin.BindUFunction(this, "PunchEndOverlap");
+	RightPunchCollision->OnComponentEndOverlap.Add(RightPunchDelegateEnd);
+
+	LeftPunchCollision = CreateDefaultSubobject<UBoxComponent>(TEXT("LeftPunchCollision"));
+	LeftPunchCollision->InitBoxExtent(FVector(20.f, 10.f, 10.f));
+	LeftPunchCollision->SetupAttachment(GetRootComponent());
+	LeftPunchCollision->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	LeftPunchCollision->SetHiddenInGame(false);
+	FScriptDelegate LeftPunchDelegateBegin;
+	LeftPunchDelegateBegin.BindUFunction(this, "PunchBeginOverlap");
+	LeftPunchCollision->OnComponentBeginOverlap.Add(LeftPunchDelegateBegin);
+	FScriptDelegate LeftPunchDelegateEnd;
+	LeftPunchDelegateEnd.BindUFunction(this, "PunchEndOverlap");
+	LeftPunchCollision->OnComponentEndOverlap.Add(LeftPunchDelegateEnd);
 
 	//CharacterMovement‚ÌÝ’è
 	GetCharacterMovement()->bOrientRotationToMovement = true;
@@ -114,7 +127,7 @@ void AMyCharacter::Tick(float DeltaTime)
 	if (CoolTime != 0)
 	{
 		CurrentCoolTime = NowTime - LastTime;
-		GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor::Red, FString::Printf(TEXT("%f"), CurrentCoolTime));
+		//GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor::Red, FString::Printf(TEXT("%f"), CurrentCoolTime));
 	}
 
 	if (CoolTime <= CurrentCoolTime)
@@ -123,31 +136,45 @@ void AMyCharacter::Tick(float DeltaTime)
 		LastTime = 0.f;
 		CurrentCoolTime = 0.f;
 		attackflag = false;
-	}
-
-	if (!attackflag)
-	{
-		PunchCollision->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+		RightPunchCollision->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+		LeftPunchCollision->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	}
 
 	//ˆê”Ô‹ß‚¢“G‚Æ‚Ì‹——£‚ðŽæ“¾‚·‚é
-	//for (TActorIterator<AMyEnemy> it(GetWorld()); it; ++it)
-	//{
-	//	if (enemyNum >= 2)
-	//	{
-	//		continue;
-	//	}
+	for (TActorIterator<AMyEnemy> it(GetWorld()); it; ++it)
+	{
+		if (enemyNum >= 2)
+		{
+			continue;
+		}
 
-	//	AMyEnemy* TargetEnemy = *it;
+		AMyEnemy* TargetEnemy = *it;
 
-	//	float vecBetweenDistance = FVector::Dist(TargetEnemy->GetActorLocation(), this->GetActorLocation());
+		float vecBetweenDistance = FVector::Dist(TargetEnemy->GetActorLocation(), this->GetActorLocation());
 
-	//	if (vecBetweenDistance < enemyDistance || enemyDistance == -1.f)
-	//	{
-	//		enemyDistance = vecBetweenDistance;
-	//		EnemyLocation = TargetEnemy->GetActorLocation();
-	//	}
-	//}
+		if (vecBetweenDistance < enemyDistance || enemyDistance == -1.f)
+		{
+			enemyDistance = vecBetweenDistance;
+			EnemyLocation = TargetEnemy->GetActorLocation();
+			//GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor::Red, FString::SanitizeFloat(enemyDistance));
+		}
+	}
+
+	if (attackflag && enemyNum != 0)
+	{
+		IsMoveAttack = true;
+	}
+	else if (!attackflag)
+	{
+		IsMoveAttack = false;
+	}
+
+	if (IsMoveAttack)
+	{
+		FVector playerVec = this->GetActorLocation();
+		FVector vec = EnemyLocation - playerVec;
+		AddMovementInput(vec, 1);
+	}
 }
 
 void AMyCharacter::OnTestOverlapBegin(AActor* OtherActor, UPrimitiveComponent * OtherComponent, int32 OtherBodyIndex, bool bFromSweep, FHitResult & SweepResult)
@@ -155,6 +182,7 @@ void AMyCharacter::OnTestOverlapBegin(AActor* OtherActor, UPrimitiveComponent * 
 	if (OtherComponent->ComponentHasTag("Enemy"))
 	{
 		++enemyNum;
+		//GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor::Red, TEXT("Add"));
 	}
 }
 
@@ -168,6 +196,7 @@ void AMyCharacter::OnTestOverlapEnd(AActor * OtherActor, UPrimitiveComponent * O
 	if (enemyNum == 0)
 	{
 		EnemyLocation = this->GetActorLocation();
+		IsMoveAttack = false;
 		enemyDistance = -1;
 	}
 	
@@ -177,7 +206,7 @@ void AMyCharacter::PunchBeginOverlap(UPrimitiveComponent * OverlappedComponent, 
 {
 	if (OtherComponent->ComponentHasTag("Enemy"))
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor::Blue, TEXT("Punch!!!!!"));
+		//GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor::Blue, TEXT("Punch!!!!!"));
 	}
 }
 
@@ -190,9 +219,23 @@ bool AMyCharacter::GetIsAttack()
 	return attackflag;
 }
 
+void AMyCharacter::SetIsAttack(bool _IsAttack)
+{
+	attackflag = _IsAttack;
+}
+
 bool AMyCharacter::GetIsHit()
 {
 	return ishit;
+}
+
+void AMyCharacter::AttackInertia(FVector AttackDirection)
+{
+	FVector MovementLocation(AttackDirection.X - this->GetActorLocation().X,
+		AttackDirection.Y - this->GetActorLocation().Y,
+		AttackDirection.Z - this->GetActorLocation().Z);
+
+	AddMovementInput(MovementLocation, 1.f);
 }
 
 // Called to bind functionality to input
@@ -208,7 +251,7 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 
 void AMyCharacter::MoveRightLeft(float Val)
 {
-	if (!attackflag)
+	if (!attackflag && !InitMoveLimit)
 	{
 		AddMovementInput(FVector(0.f, -1.f, 0.f), Val);
 	}
@@ -218,7 +261,7 @@ void AMyCharacter::MoveRightLeft(float Val)
 
 void AMyCharacter::MoveUpDown(float Val)
 {
-	if (!attackflag)
+	if (!attackflag && !InitMoveLimit)
 	{
 		AddMovementInput(FVector(-1.f, 0.f, 0.f), Val);
 	}
@@ -230,19 +273,19 @@ void AMyCharacter::Attack_Action()
 {
 	float AttackSpeed = -3.f;
 
-	if (!attackflag && CoolTime == 0)
+	if (CoolTime == 0 && !InitMoveLimit)
 	{
-		CoolTime = 0.68f;
+		CoolTime = 0.3f;
 		attackflag = true;
-		PunchCollision->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);//AttackFlag‚ðtrue‚É‚µ‚½Œã‚ÉCollision‚ð’Ç‰Á‚·‚é
+		RightPunchCollision->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);//AttackFlag‚ðtrue‚É‚µ‚½Œã‚ÉCollision‚ð’Ç‰Á‚·‚é
 		LastTime = GetWorld()->GetTimeSeconds();//UŒ‚Žž‚ÌŽžŠÔ‚ðŽæ“¾
+
 
 		//if (enemyNum != 0)
 		//{
-		//	FVector playerVec = this->GetActorLocation();
-
-		//	FVector vec = EnemyLocation - playerVec;
-
+		//	//FVector playerVec = this->GetActorLocation();
+		//	//FVector vec = EnemyLocation - playerVec;
+		//	//AddMovementInput(vec, 1);
 		//	//if (!ishit)
 		//	//{
 		//	//	GetCharacterMovement()->MaxWalkSpeed = MaxWalkSpeed;
@@ -251,8 +294,9 @@ void AMyCharacter::Attack_Action()
 		//	//{
 		//	//	GetCharacterMovement()->MaxWalkSpeed = defaultWalkSpeed;
 		//	//}
-
-		//	AddMovementInput(vec, 1);
+		//	GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor::Red, FString::FromInt(enemyNum));
+		//	
+		//	//AddActorWorldOffset(EnemyLocation, true);
 		//}
 	}
 	

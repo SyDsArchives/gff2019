@@ -8,6 +8,7 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+struct FVector;
 class UPrimitiveComponent;
 class AActor;
 struct FHitResult;
@@ -18,11 +19,29 @@ struct FHitResult;
 
 #define GFF_Source_GFF_MyCharacter_h_15_RPC_WRAPPERS \
  \
+	DECLARE_FUNCTION(execAttackInertia) \
+	{ \
+		P_GET_STRUCT(FVector,Z_Param_AttackDirection); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->AttackInertia(Z_Param_AttackDirection); \
+		P_NATIVE_END; \
+	} \
+ \
 	DECLARE_FUNCTION(execGetIsHit) \
 	{ \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
 		*(bool*)Z_Param__Result=P_THIS->GetIsHit(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execSetIsAttack) \
+	{ \
+		P_GET_UBOOL(Z_Param__IsAttack); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->SetIsAttack(Z_Param__IsAttack); \
 		P_NATIVE_END; \
 	} \
  \
@@ -87,11 +106,29 @@ struct FHitResult;
 
 #define GFF_Source_GFF_MyCharacter_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
  \
+	DECLARE_FUNCTION(execAttackInertia) \
+	{ \
+		P_GET_STRUCT(FVector,Z_Param_AttackDirection); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->AttackInertia(Z_Param_AttackDirection); \
+		P_NATIVE_END; \
+	} \
+ \
 	DECLARE_FUNCTION(execGetIsHit) \
 	{ \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
 		*(bool*)Z_Param__Result=P_THIS->GetIsHit(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execSetIsAttack) \
+	{ \
+		P_GET_UBOOL(Z_Param__IsAttack); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->SetIsAttack(Z_Param__IsAttack); \
 		P_NATIVE_END; \
 	} \
  \
@@ -200,13 +237,16 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AMyCharacter); \
 	FORCEINLINE static uint32 __PPO__SideViewCameraComponent() { return STRUCT_OFFSET(AMyCharacter, SideViewCameraComponent); } \
 	FORCEINLINE static uint32 __PPO__CameraBoom() { return STRUCT_OFFSET(AMyCharacter, CameraBoom); } \
 	FORCEINLINE static uint32 __PPO__EnemySearch() { return STRUCT_OFFSET(AMyCharacter, EnemySearch); } \
-	FORCEINLINE static uint32 __PPO__PunchCollision() { return STRUCT_OFFSET(AMyCharacter, PunchCollision); } \
+	FORCEINLINE static uint32 __PPO__RightPunchCollision() { return STRUCT_OFFSET(AMyCharacter, RightPunchCollision); } \
+	FORCEINLINE static uint32 __PPO__LeftPunchCollision() { return STRUCT_OFFSET(AMyCharacter, LeftPunchCollision); } \
 	FORCEINLINE static uint32 __PPO__attackflag() { return STRUCT_OFFSET(AMyCharacter, attackflag); } \
+	FORCEINLINE static uint32 __PPO__InitMoveLimit() { return STRUCT_OFFSET(AMyCharacter, InitMoveLimit); } \
+	FORCEINLINE static uint32 __PPO__ishit() { return STRUCT_OFFSET(AMyCharacter, ishit); } \
 	FORCEINLINE static uint32 __PPO__MaxWalkSpeed() { return STRUCT_OFFSET(AMyCharacter, MaxWalkSpeed); } \
 	FORCEINLINE static uint32 __PPO__defaultWalkSpeed() { return STRUCT_OFFSET(AMyCharacter, defaultWalkSpeed); } \
-	FORCEINLINE static uint32 __PPO__ishit() { return STRUCT_OFFSET(AMyCharacter, ishit); } \
 	FORCEINLINE static uint32 __PPO__enemyDistance() { return STRUCT_OFFSET(AMyCharacter, enemyDistance); } \
-	FORCEINLINE static uint32 __PPO__enemyNum() { return STRUCT_OFFSET(AMyCharacter, enemyNum); }
+	FORCEINLINE static uint32 __PPO__enemyNum() { return STRUCT_OFFSET(AMyCharacter, enemyNum); } \
+	FORCEINLINE static uint32 __PPO__ComboAttack() { return STRUCT_OFFSET(AMyCharacter, ComboAttack); }
 
 
 #define GFF_Source_GFF_MyCharacter_h_12_PROLOG
