@@ -88,7 +88,7 @@ bool AMyEnemy::GetIsDead()
 
 void AMyEnemy::OnBeginOverlap(UPrimitiveComponent * OverlapComponent, AActor * OtherActor, UPrimitiveComponent * OtherComponent, int32 OtherBodyIndex, bool bFromSweep, FHitResult & SweepResult)
 {
-	if (OtherComponent->ComponentHasTag("Attack"))
+	if (OtherActor->ActorHasTag("Player") && OtherComponent->ComponentHasTag("Attack"))
 	{
 		//GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Red, TEXT("BeginOverlap"));
 		BeforeVitality = Vitality;

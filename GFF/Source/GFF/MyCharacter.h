@@ -63,6 +63,8 @@ protected:
 		bool InitMoveLimit;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool IsCombatRange;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool IsDead;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		float MaxWalkSpeed;
@@ -75,6 +77,8 @@ protected:
 		int enemyNum;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		int ComboAttack;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		int Vitality;
 
 public:	
 
@@ -98,11 +102,19 @@ public:
 	void PunchEndOverlap(class UPrimitiveComponent* OverlappedComponent,class AActor* OtherActor, class UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex);
 
 	UFUNCTION(BlueprintCallable, Category = "MyBPLibrary")
+	void CapsuleBeginOverlap(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex, bool bFromSweep, FHitResult& SweepResult);
+	UFUNCTION(BlueprintCallable, Category = "MyBPLibrary")
+	void CapsuleEndOverlap(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex);
+
+	UFUNCTION(BlueprintCallable, Category = "MyBPLibrary")
 	bool GetIsAttack();
 	UFUNCTION(BlueprintCallable, Category = "MyBPLibrary")
 	void SetIsAttack(bool _IsAttack);
 
 	UFUNCTION(BlueprintCallable, Category = "MyBPLibrary")
 	bool GetIsCombatRange();
+
+	UFUNCTION(BlueprintCallable, Category = "MyBPLibrary")
+	void PunchCollisionProceed(FString _LorRHandName);
 
 };

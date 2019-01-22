@@ -18,6 +18,15 @@ struct FHitResult;
 
 #define GFF_Source_GFF_MyCharacter_h_15_RPC_WRAPPERS \
  \
+	DECLARE_FUNCTION(execPunchCollisionProceed) \
+	{ \
+		P_GET_PROPERTY(UStrProperty,Z_Param__LorRHandName); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->PunchCollisionProceed(Z_Param__LorRHandName); \
+		P_NATIVE_END; \
+	} \
+ \
 	DECLARE_FUNCTION(execGetIsCombatRange) \
 	{ \
 		P_FINISH; \
@@ -40,6 +49,32 @@ struct FHitResult;
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
 		*(bool*)Z_Param__Result=P_THIS->GetIsAttack(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execCapsuleEndOverlap) \
+	{ \
+		P_GET_OBJECT(UPrimitiveComponent,Z_Param_OverlappedComponent); \
+		P_GET_OBJECT(AActor,Z_Param_OtherActor); \
+		P_GET_OBJECT(UPrimitiveComponent,Z_Param_OtherComponent); \
+		P_GET_PROPERTY(UIntProperty,Z_Param_OtherBodyIndex); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->CapsuleEndOverlap(Z_Param_OverlappedComponent,Z_Param_OtherActor,Z_Param_OtherComponent,Z_Param_OtherBodyIndex); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execCapsuleBeginOverlap) \
+	{ \
+		P_GET_OBJECT(UPrimitiveComponent,Z_Param_OverlappedComponent); \
+		P_GET_OBJECT(AActor,Z_Param_OtherActor); \
+		P_GET_OBJECT(UPrimitiveComponent,Z_Param_OtherComponent); \
+		P_GET_PROPERTY(UIntProperty,Z_Param_OtherBodyIndex); \
+		P_GET_UBOOL(Z_Param_bFromSweep); \
+		P_GET_STRUCT_REF(FHitResult,Z_Param_Out_SweepResult); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->CapsuleBeginOverlap(Z_Param_OverlappedComponent,Z_Param_OtherActor,Z_Param_OtherComponent,Z_Param_OtherBodyIndex,Z_Param_bFromSweep,Z_Param_Out_SweepResult); \
 		P_NATIVE_END; \
 	} \
  \
@@ -96,6 +131,15 @@ struct FHitResult;
 
 #define GFF_Source_GFF_MyCharacter_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
  \
+	DECLARE_FUNCTION(execPunchCollisionProceed) \
+	{ \
+		P_GET_PROPERTY(UStrProperty,Z_Param__LorRHandName); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->PunchCollisionProceed(Z_Param__LorRHandName); \
+		P_NATIVE_END; \
+	} \
+ \
 	DECLARE_FUNCTION(execGetIsCombatRange) \
 	{ \
 		P_FINISH; \
@@ -118,6 +162,32 @@ struct FHitResult;
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
 		*(bool*)Z_Param__Result=P_THIS->GetIsAttack(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execCapsuleEndOverlap) \
+	{ \
+		P_GET_OBJECT(UPrimitiveComponent,Z_Param_OverlappedComponent); \
+		P_GET_OBJECT(AActor,Z_Param_OtherActor); \
+		P_GET_OBJECT(UPrimitiveComponent,Z_Param_OtherComponent); \
+		P_GET_PROPERTY(UIntProperty,Z_Param_OtherBodyIndex); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->CapsuleEndOverlap(Z_Param_OverlappedComponent,Z_Param_OtherActor,Z_Param_OtherComponent,Z_Param_OtherBodyIndex); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execCapsuleBeginOverlap) \
+	{ \
+		P_GET_OBJECT(UPrimitiveComponent,Z_Param_OverlappedComponent); \
+		P_GET_OBJECT(AActor,Z_Param_OtherActor); \
+		P_GET_OBJECT(UPrimitiveComponent,Z_Param_OtherComponent); \
+		P_GET_PROPERTY(UIntProperty,Z_Param_OtherBodyIndex); \
+		P_GET_UBOOL(Z_Param_bFromSweep); \
+		P_GET_STRUCT_REF(FHitResult,Z_Param_Out_SweepResult); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->CapsuleBeginOverlap(Z_Param_OverlappedComponent,Z_Param_OtherActor,Z_Param_OtherComponent,Z_Param_OtherBodyIndex,Z_Param_bFromSweep,Z_Param_Out_SweepResult); \
 		P_NATIVE_END; \
 	} \
  \
@@ -223,11 +293,13 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AMyCharacter); \
 	FORCEINLINE static uint32 __PPO__attackflag() { return STRUCT_OFFSET(AMyCharacter, attackflag); } \
 	FORCEINLINE static uint32 __PPO__InitMoveLimit() { return STRUCT_OFFSET(AMyCharacter, InitMoveLimit); } \
 	FORCEINLINE static uint32 __PPO__IsCombatRange() { return STRUCT_OFFSET(AMyCharacter, IsCombatRange); } \
+	FORCEINLINE static uint32 __PPO__IsDead() { return STRUCT_OFFSET(AMyCharacter, IsDead); } \
 	FORCEINLINE static uint32 __PPO__MaxWalkSpeed() { return STRUCT_OFFSET(AMyCharacter, MaxWalkSpeed); } \
 	FORCEINLINE static uint32 __PPO__defaultWalkSpeed() { return STRUCT_OFFSET(AMyCharacter, defaultWalkSpeed); } \
 	FORCEINLINE static uint32 __PPO__enemyDistance() { return STRUCT_OFFSET(AMyCharacter, enemyDistance); } \
 	FORCEINLINE static uint32 __PPO__enemyNum() { return STRUCT_OFFSET(AMyCharacter, enemyNum); } \
-	FORCEINLINE static uint32 __PPO__ComboAttack() { return STRUCT_OFFSET(AMyCharacter, ComboAttack); }
+	FORCEINLINE static uint32 __PPO__ComboAttack() { return STRUCT_OFFSET(AMyCharacter, ComboAttack); } \
+	FORCEINLINE static uint32 __PPO__Vitality() { return STRUCT_OFFSET(AMyCharacter, Vitality); }
 
 
 #define GFF_Source_GFF_MyCharacter_h_12_PROLOG

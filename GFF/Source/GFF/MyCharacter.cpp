@@ -24,8 +24,9 @@
 
 
 // Sets default values
-AMyCharacter::AMyCharacter():attackflag(false), IsMoveAttack(false), InitMoveLimit(true), IsCombatRange(false),
-MaxWalkSpeed(10000.f), defaultWalkSpeed(500.f), LastTime(0.f), CurrentCoolTime(0.f), CoolTime(0.f)
+AMyCharacter::AMyCharacter():attackflag(false), IsMoveAttack(false), InitMoveLimit(true), IsCombatRange(false), IsDead(false),
+MaxWalkSpeed(10000.f), defaultWalkSpeed(500.f), LastTime(0.f), CurrentCoolTime(0.f), CoolTime(0.f),
+Vitality(10)
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -92,6 +93,13 @@ MaxWalkSpeed(10000.f), defaultWalkSpeed(500.f), LastTime(0.f), CurrentCoolTime(0
 	FScriptDelegate LeftPunchDelegateEnd;
 	LeftPunchDelegateEnd.BindUFunction(this, "PunchEndOverlap");
 	LeftPunchCollision->OnComponentEndOverlap.Add(LeftPunchDelegateEnd);
+
+	FScriptDelegate CapsuleOverlapBegin;
+	CapsuleOverlapBegin.BindUFunction(this, "CapsuleBeginOverlap");
+	LeftPunchCollision->OnComponentBeginOverlap.Add(CapsuleOverlapBegin);
+	FScriptDelegate CapsuleOverlapEnd;
+	CapsuleOverlapEnd.BindUFunction(this, "CapsuleEndOverlap");
+	LeftPunchCollision->OnComponentEndOverlap.Add(CapsuleOverlapEnd);
 
 	//CharacterMovement‚Ìİ’è
 	GetCharacterMovement()->bOrientRotationToMovement = true;
@@ -187,8 +195,27 @@ void AMyCharacter::Tick(float DeltaTime)
 
 	this->SearchEnemy();
 
-	this->ApproachEnemy();
+	if (Vitality <= 0)
+	{
+		IsDead = true;
+	}
+
+	//this->ApproachEnemy();
 }
+
+void AMyCharacter::PunchCollisionProceed(FString _LorRHandName)
+{
+	if (_LorRHandName == FString("RHand"))
+	{
+		RightPunchCollision->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+	}
+
+	if (_LorRHandName == FString("LHand"))
+	{
+		LeftPunchCollision->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+	}
+}
+
 
 //////////////////////////////// Overlap /////////////////////////////////
 void AMyCharacter::OnTestOverlapBegin(AActor* OtherActor, UPrimitiveComponent * OtherComponent, int32 OtherBodyIndex, bool bFromSweep, FHitResult & SweepResult)
@@ -227,6 +254,39 @@ void AMyCharacter::PunchEndOverlap(UPrimitiveComponent * OverlappedComponent, AA
 {
 }
 
+void AMyCharacter::CapsuleBeginOverlap(UPrimitiveComponent * OverlappedComponent, AActor * OtherActor, UPrimitiveComponent * OtherComponent, int32 OtherBodyIndex, bool bFromSweep, FHitResult & SweepResult)
+{
+	if (OtherActor->ActorHasTag("Enemy") && OtherComponent->ComponentHasTag("Attack"))
+	{
+		--Vitality;
+
+		float Impulse;
+
+		FVector myVec = this->GetActorForwardVector();
+		if (myVec.Equals(OtherActor->GetActorForwardVector(), 1.f))
+		{
+			//DamageCount = 0;
+			Impulse = 2000;
+			FVector tmpVec(this->GetActorForwardVector().X * Impulse,
+				this->GetActorForwardVector().Y * Impulse,
+				this->GetActorForwardVector().Z * Impulse);
+			LaunchCharacter(tmpVec, false, false);
+		}
+		else
+		{
+			Impulse = -2000;
+			FVector tmpVec(this->GetActorForwardVector().X * Impulse,
+				this->GetActorForwardVector().Y * Impulse,
+				this->GetActorForwardVector().Z * Impulse);
+			LaunchCharacter(tmpVec, false, false);
+		}
+	}
+}
+
+void AMyCharacter::CapsuleEndOverlap(UPrimitiveComponent * OverlappedComponent, AActor * OtherActor, UPrimitiveComponent * OtherComponent, int32 OtherBodyIndex)
+{
+}
+
 
 ///////////////////////////////// Get & Set /////////////////////////////////
 bool AMyCharacter::GetIsAttack()
@@ -243,7 +303,6 @@ bool AMyCharacter::GetIsCombatRange()
 {
 	return IsCombatRange;
 }
-
 
 /////////////////////////////////Project Setting. Input/////////////////////////////////
 void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -280,7 +339,6 @@ void AMyCharacter::Attack_Action()
 	{
 		CoolTime = 0.3f;
 		attackflag = true;
-		RightPunchCollision->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);//AttackFlag‚ğtrue‚É‚µ‚½Œã‚ÉCollision‚ğ’Ç‰Á‚·‚é
 		LastTime = GetWorld()->GetTimeSeconds();//UŒ‚‚ÌŠÔ‚ğæ“¾
 	}
 	
