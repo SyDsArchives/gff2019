@@ -53,10 +53,6 @@ void AMyEnemy::Tick(float DeltaTime)
 	if (IsDamaged && DamageCount == 3)
 	{
 		GetCharacterMovement()->bOrientRotationToMovement = 0;
-		FVector vec = GetActorForwardVector();
-		vec = vec * FVector(-1, -1, -1);
-		vec = vec * FVector(10000, 10000, 10000);
-		AddMovementInput(vec, 1.f);
 	}
 	else if(GetCharacterMovement()->bOrientRotationToMovement != 1)
 	{
@@ -103,6 +99,27 @@ void AMyEnemy::OnBeginOverlap(UPrimitiveComponent * OverlapComponent, AActor * O
 		--Vitality;
 
 		InvincibleTime = 50;
+
+		float Impulse;
+
+		FVector myVec = this->GetActorForwardVector();
+		if (myVec.Equals(OtherActor->GetActorForwardVector(), 1.f))
+		{
+			//DamageCount = 0;
+			Impulse = 2000;
+			FVector tmpVec(this->GetActorForwardVector().X * Impulse,
+				this->GetActorForwardVector().Y * Impulse,
+				this->GetActorForwardVector().Z * Impulse);
+			LaunchCharacter(tmpVec, false, false);
+		}
+		else if(DamageCount == 3)
+		{
+			Impulse = -2000;
+			FVector tmpVec(this->GetActorForwardVector().X * Impulse,
+				this->GetActorForwardVector().Y * Impulse,
+				this->GetActorForwardVector().Z * Impulse);
+			LaunchCharacter(tmpVec, false, false);
+		}
 	}
 }
 
