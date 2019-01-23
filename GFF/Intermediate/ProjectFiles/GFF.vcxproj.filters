@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\GFF.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{19F37A17-337D-40C6-B257-EDF028312993}</UniqueIdentifier>
+      <UniqueIdentifier>{A52C2F62-60DB-46DD-BF90-F6D4B4E76033}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\GFF.Target.cs">
       <Filter>Source</Filter>
@@ -12,7 +12,7 @@
       <Filter>Source</Filter>
     </None>
     <Filter Include="Config">
-      <UniqueIdentifier>{27329A21-E8C1-4059-9141-E54C0D3C8E0F}</UniqueIdentifier>
+      <UniqueIdentifier>{6241FD3E-AA90-457A-BAF0-2990D1BC96DD}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -30,7 +30,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\GFF">
-      <UniqueIdentifier>{1BF1BF9F-0B9B-4D7A-B372-14C291138FC2}</UniqueIdentifier>
+      <UniqueIdentifier>{B5D2D159-D6F7-42F1-AF27-F913A3FC5080}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\GFF\GFF.Build.cs">
       <Filter>Source\GFF</Filter>
@@ -47,34 +47,17 @@
     <ClInclude Include="..\..\Source\GFF\GFFCharacter.h">
       <Filter>Source\GFF</Filter>
     </ClInclude>
-    <ClCompile Include="..\..\Source\GFF\GFFGameMode.cpp">
-      <Filter>Source\GFF</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Source\GFF\GFFGameMode.h">
-      <Filter>Source\GFF</Filter>
-    </ClInclude>
-    <None Include="cpp.hint" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\Source\GFF\MyCharacter.h">
-      <Filter>Source\GFF</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\GFF\MyEnemy.h">
-      <Filter>Source\GFF</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\GFF\TimeActor.h">
-      <Filter>Source\GFF</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="..\..\Source\GFF\MyCharacter.cpp">
       <Filter>Source\GFF</Filter>
     </ClCompile>
+    <ClInclude Include="..\..\Source\GFF\MyCharacter.h">
+      <Filter>Source\GFF</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\GFF\MyEnemy.cpp">
       <Filter>Source\GFF</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\GFF\TimeActor.cpp">
+    <ClInclude Include="..\..\Source\GFF\MyEnemy.h">
       <Filter>Source\GFF</Filter>
-    </ClCompile>
+    </ClInclude>
   </ItemGroup>
 </Project>

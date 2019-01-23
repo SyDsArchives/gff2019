@@ -18,13 +18,14 @@
 #include "Runtime/Engine/Classes/Engine/Engine.h"
 
 #include "Runtime/Engine/Classes/Kismet/KismetSystemLibrary.h"
-
+#include "Runtime/Engine/Classes/Kismet/KismetMathLibrary.h"
 #include "Runtime/Core/Public/Misc/DateTime.h"
 #include "Runtime/Core/Public/Misc/Timespan.h"
 
 
 // Sets default values
-AMyCharacter::AMyCharacter():attackflag(false), IsMoveAttack(false), InitMoveLimit(true), IsCombatRange(false), IsDead(false),
+AMyCharacter::AMyCharacter():TargetEnemy(nullptr),
+attackflag(false), IsMoveAttack(false), InitMoveLimit(true), IsCombatRange(false), IsDead(false),
 MaxWalkSpeed(10000.f), defaultWalkSpeed(500.f), LastTime(0.f), CurrentCoolTime(0.f), CoolTime(0.f),
 Vitality(10)
 {
@@ -132,14 +133,16 @@ void AMyCharacter::SearchEnemy()
 			continue;
 		}
 
-		AMyEnemy* TargetEnemy = *it;
 
-		float vecBetweenDistance = FVector::Dist(TargetEnemy->GetActorLocation(), this->GetActorLocation());
+		AMyEnemy* CheckEnemy = *it;
+
+		float vecBetweenDistance = FVector::Dist(CheckEnemy->GetActorLocation(), this->GetActorLocation());
 
 		if (vecBetweenDistance < enemyDistance || enemyDistance == -1.f)
 		{
 			enemyDistance = vecBetweenDistance;
-			EnemyLocation = TargetEnemy->GetActorLocation();
+			EnemyLocation = CheckEnemy->GetActorLocation();
+			TargetEnemy = CheckEnemy;
 		}
 	}
 }
@@ -266,7 +269,7 @@ void AMyCharacter::CapsuleBeginOverlap(UPrimitiveComponent * OverlappedComponent
 		if (myVec.Equals(OtherActor->GetActorForwardVector(), 1.f))
 		{
 			//DamageCount = 0;
-			Impulse = 2000;
+			Impulse = 1000;
 			FVector tmpVec(this->GetActorForwardVector().X * Impulse,
 				this->GetActorForwardVector().Y * Impulse,
 				this->GetActorForwardVector().Z * Impulse);
@@ -274,7 +277,7 @@ void AMyCharacter::CapsuleBeginOverlap(UPrimitiveComponent * OverlappedComponent
 		}
 		else
 		{
-			Impulse = -2000;
+			Impulse = -1000;
 			FVector tmpVec(this->GetActorForwardVector().X * Impulse,
 				this->GetActorForwardVector().Y * Impulse,
 				this->GetActorForwardVector().Z * Impulse);
@@ -317,7 +320,7 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 
 void AMyCharacter::MoveRightLeft(float Val)
 {
-	if (!attackflag && !InitMoveLimit)
+	if (!attackflag && !InitMoveLimit && !IsDead)
 	{
 		AddMovementInput(FVector(0.f, -1.f, 0.f), Val);
 	}
@@ -325,7 +328,7 @@ void AMyCharacter::MoveRightLeft(float Val)
 
 void AMyCharacter::MoveUpDown(float Val)
 {
-	if (!attackflag && !InitMoveLimit)
+	if (!attackflag && !InitMoveLimit && !IsDead)
 	{
 		AddMovementInput(FVector(-1.f, 0.f, 0.f), Val);
 	}
@@ -340,6 +343,10 @@ void AMyCharacter::Attack_Action()
 		CoolTime = 0.3f;
 		attackflag = true;
 		LastTime = GetWorld()->GetTimeSeconds();//UŒ‚Žž‚ÌŽžŠÔ‚ðŽæ“¾
+
+		FRotator LookAtTargetRotation = UKismetMathLibrary::FindLookAtRotation(this->GetActorLocation(), TargetEnemy->GetActorLocation());
+
+		this->SetActorRotation(FRotator(this->GetActorRotation().Pitch, LookAtTargetRotation.Yaw, this->GetActorRotation().Roll));
 	}
 	
 }

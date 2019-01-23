@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.25807.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Engine", "Engine", "{55F92D6A-C66A-4E00-8A39-DEBFFEC9706E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Engine", "Engine", "{8B43B6F7-C49F-45FE-AE98-199216D8C34D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Games", "Games", "{0496A6B3-F9A2-4FE5-A2C9-C189D675238D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Games", "Games", "{98819488-224E-4976-9C8F-8DDBDA140DD8}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UE4", "Intermediate\ProjectFiles\UE4.vcxproj", "{2FDE5269-340C-42D1-BA60-4B36C79D24E9}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GFF", "Intermediate\ProjectFiles\GFF.vcxproj", "{374BB595-E9C8-466F-88FF-1547FF5DDCEE}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Visualizers", "Visualizers", "{C782C81B-BCD2-4F63-ABFA-16E28D727915}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Visualizers", "Visualizers", "{A187890E-B968-4DF8-ABBA-D9AF0201C74D}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\Unreal Engine\Unreal Engine\4.20.1\UE_4.21\Engine\Extras\VisualStudioDebugging\UE4.natvis = ..\..\Unreal Engine\Unreal Engine\4.20.1\UE_4.21\Engine\Extras\VisualStudioDebugging\UE4.natvis
+		..\..\..\Unreal Engine\Unreal Engine\4.20.1\UE_4.21\Engine\Extras\VisualStudioDebugging\UE4.natvis = ..\..\..\Unreal Engine\Unreal Engine\4.20.1\UE_4.21\Engine\Extras\VisualStudioDebugging\UE4.natvis
 	EndProjectSection
 EndProject
 Global
@@ -99,7 +99,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{2FDE5269-340C-42D1-BA60-4B36C79D24E9} = {55F92D6A-C66A-4E00-8A39-DEBFFEC9706E}
-		{374BB595-E9C8-466F-88FF-1547FF5DDCEE} = {0496A6B3-F9A2-4FE5-A2C9-C189D675238D}
+		{2FDE5269-340C-42D1-BA60-4B36C79D24E9} = {8B43B6F7-C49F-45FE-AE98-199216D8C34D}
+		{374BB595-E9C8-466F-88FF-1547FF5DDCEE} = {98819488-224E-4976-9C8F-8DDBDA140DD8}
 	EndGlobalSection
 EndGlobal

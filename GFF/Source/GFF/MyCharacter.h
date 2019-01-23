@@ -6,7 +6,7 @@
 #include "GameFramework/Character.h"
 #include "MyCharacter.generated.h"
 
-class ATimeActor;
+class AMyEnemy;
 struct FVector;
 //struct FDataTime;
 UCLASS(config = Game)
@@ -26,6 +26,7 @@ class GFF_API AMyCharacter : public ACharacter
 	class UBoxComponent* LeftPunchCollision;//çUåÇîªíË
 
 	FVector EnemyLocation;
+	AMyEnemy* TargetEnemy;
 	
 	float LastTime;
 	float CurrentCoolTime;
