@@ -66,6 +66,11 @@ DerivedDataCache/*
 #�A�Z�b�g�𖳎�����
 Assets/
 
+/Binaries
+/DerivedDataCache
+/Intermediate
+/Saved
+
 #ipch�𖳎�
 *.ipch
 
@@ -78,3 +83,5 @@ GFF/Content/Enemy/Global/MaterialLayers/Wood/T_TreeBark_D.uasset
 GFF/Content/Enemy/Global/MaterialLayers/Wood/T_TreeBark_N.uasset
 GFF/Content/Maps/GamePlay/Enemy/Global/MaterialLayers/Wood/T_TreeBark_N.uasset
 GFF/Content/Maps/GamePlay/Enemy/Global/MaterialLayers/Wood/T_TreeBark_D.uasset
+
+
