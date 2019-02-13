@@ -324,180 +324,6 @@
 			}
 		},
 		{
-			"File": "../../../Engine/Plugins/Experimental/AlembicImporter/AlembicImporter.uplugin",
-			"Descriptor": 
-			{
-				"FileVersion": 3,
-				"Version": 1,
-				"VersionName": "0.1",
-				"FriendlyName": "Alembic Importer (Experimental)",
-				"Description": "Support importing Alembic files",
-				"Category": "Importers",
-				"CreatedBy": "Epic Games, Inc.",
-				"CreatedByURL": "http://epicgames.com",
-				"DocsURL": "",
-				"MarketplaceURL": "",
-				"SupportURL": "",
-				"EnabledByDefault": true,
-				"CanContainContent": false,
-				"IsBetaVersion": true,
-				"Modules": [
-					{
-						"Name": "AlembicImporter",
-						"Type": "Editor",
-						"LoadingPhase": "Default",
-						"WhitelistPlatforms": [
-							"Win64",
-							"Mac",
-							"Linux"
-						]
-					},
-					{
-						"Name": "AlembicLibrary",
-						"Type": "Editor",
-						"LoadingPhase": "Default",
-						"WhitelistPlatforms": [
-							"Win64",
-							"Mac",
-							"Linux"
-						]
-					}
-				],
-				"Plugins": [
-					{
-						"Name": "GeometryCache",
-						"Enabled": true
-					}
-				]
-			}
-		},
-		{
-			"File": "../../../Engine/Plugins/Experimental/GeometryCache/GeometryCache.uplugin",
-			"Descriptor": 
-			{
-				"FileVersion": 3,
-				"Version": 1,
-				"VersionName": "0.1",
-				"FriendlyName": "Geometry Cache (Experimental)",
-				"Description": "Support for distilled Geometry animations",
-				"Category": "Importers",
-				"CreatedBy": "Epic Games, Inc.",
-				"CreatedByURL": "http://epicgames.com",
-				"DocsURL": "",
-				"MarketplaceURL": "",
-				"SupportURL": "",
-				"EnabledByDefault": true,
-				"CanContainContent": false,
-				"IsBetaVersion": true,
-				"Modules": [
-					{
-						"Name": "GeometryCacheEd",
-						"Type": "Editor",
-						"LoadingPhase": "Default",
-						"WhitelistPlatforms": [
-							"Win64"
-						]
-					},
-					{
-						"Name": "GeometryCacheSequencer",
-						"Type": "Editor",
-						"LoadingPhase": "Default",
-						"WhitelistPlatforms": [
-							"Win64"
-						]
-					},
-					{
-						"Name": "GeometryCache",
-						"Type": "Runtime",
-						"LoadingPhase": "Default"
-					},
-					{
-						"Name": "GeometryCacheTracks",
-						"Type": "Runtime",
-						"LoadingPhase": "Default"
-					}
-				]
-			}
-		},
-		{
-			"File": "../../../Engine/Plugins/Experimental/AppleImageUtils/AppleImageUtils.uplugin",
-			"Descriptor": 
-			{
-				"FileVersion": 3,
-				"Version": 1,
-				"VersionName": "1.0",
-				"FriendlyName": "Apple Image Utils",
-				"Description": "Utilities that operate on CIImage, CVPixelBuffer, IOSurface, etc.",
-				"Category": "Experimental",
-				"CreatedBy": "Epic Games, Inc.",
-				"CreatedByURL": "http://epicgames.com",
-				"DocsURL": "",
-				"MarketplaceURL": "",
-				"SupportURL": "",
-				"EnabledByDefault": true,
-				"CanContainContent": false,
-				"IsBetaVersion": true,
-				"Modules": [
-					{
-						"Name": "AppleImageUtils",
-						"Type": "Runtime",
-						"LoadingPhase": "Default",
-						"BlacklistPlatforms": [
-							"TVOS"
-						]
-					},
-					{
-						"Name": "AppleImageUtilsBlueprintSupport",
-						"Type": "Developer",
-						"LoadingPhase": "Default",
-						"WhitelistPlatforms": [
-							"Win64",
-							"Mac",
-							"Linux"
-						]
-					}
-				]
-			}
-		},
-		{
-			"File": "../../../Engine/Plugins/Experimental/AppleVision/AppleVision.uplugin",
-			"Descriptor": 
-			{
-				"FileVersion": 3,
-				"Version": 1,
-				"VersionName": "1.0",
-				"FriendlyName": "Apple Vision API",
-				"Description": "Allows you to issue computer vision api calls for textures (camera data or render targets)",
-				"Category": "Experimental",
-				"CreatedBy": "Epic Games, Inc.",
-				"CreatedByURL": "http://epicgames.com",
-				"DocsURL": "",
-				"MarketplaceURL": "",
-				"SupportURL": "",
-				"EnabledByDefault": true,
-				"CanContainContent": false,
-				"IsBetaVersion": true,
-				"Modules": [
-					{
-						"Name": "AppleVision",
-						"Type": "Runtime",
-						"LoadingPhase": "Default"
-					},
-					{
-						"Name": "AppleVisionBlueprintSupport",
-						"Type": "Developer",
-						"LoadingPhase": "Default"
-					}
-				],
-				"Plugins": [
-					{
-						"Name": "AppleImageUtils",
-						"Enabled": true
-					}
-				]
-			}
-		},
-		{
 			"File": "../../../Engine/Plugins/Experimental/BackChannel/BackChannel.uplugin",
 			"Descriptor": 
 			{
@@ -549,6 +375,54 @@
 						"Name": "CharacterAI",
 						"Type": "Runtime",
 						"LoadingPhase": "PostEngineInit"
+					}
+				]
+			}
+		},
+		{
+			"File": "../../../Engine/Plugins/Experimental/GeometryCache/GeometryCache.uplugin",
+			"Descriptor": 
+			{
+				"FileVersion": 3,
+				"Version": 1,
+				"VersionName": "0.1",
+				"FriendlyName": "Geometry Cache (Experimental)",
+				"Description": "Support for distilled Geometry animations",
+				"Category": "Importers",
+				"CreatedBy": "Epic Games, Inc.",
+				"CreatedByURL": "http://epicgames.com",
+				"DocsURL": "",
+				"MarketplaceURL": "",
+				"SupportURL": "",
+				"EnabledByDefault": true,
+				"CanContainContent": false,
+				"IsBetaVersion": true,
+				"Modules": [
+					{
+						"Name": "GeometryCacheEd",
+						"Type": "Editor",
+						"LoadingPhase": "Default",
+						"WhitelistPlatforms": [
+							"Win64"
+						]
+					},
+					{
+						"Name": "GeometryCacheSequencer",
+						"Type": "Editor",
+						"LoadingPhase": "Default",
+						"WhitelistPlatforms": [
+							"Win64"
+						]
+					},
+					{
+						"Name": "GeometryCache",
+						"Type": "Runtime",
+						"LoadingPhase": "Default"
+					},
+					{
+						"Name": "GeometryCacheTracks",
+						"Type": "Runtime",
+						"LoadingPhase": "Default"
 					}
 				]
 			}
@@ -1081,59 +955,6 @@
 			}
 		},
 		{
-			"File": "../../../Engine/Plugins/Runtime/AndroidPermission/AndroidPermission.uplugin",
-			"Descriptor": 
-			{
-				"FileVersion": 3,
-				"Version": 1,
-				"VersionName": "0.1",
-				"FriendlyName": "Android Runtime Permission",
-				"Description": "Support for Android Runtime Permission",
-				"Category": "Android",
-				"CreatedBy": "Google",
-				"CreatedByURL": "http://developers.google.com",
-				"DocsURL": "",
-				"MarketplaceURL": "",
-				"SupportURL": "",
-				"EnabledByDefault": true,
-				"CanContainContent": false,
-				"IsBetaVersion": true,
-				"Modules": [
-					{
-						"Name": "AndroidPermission",
-						"Type": "Runtime",
-						"LoadingPhase": "Default"
-					}
-				]
-			}
-		},
-		{
-			"File": "../../../Engine/Plugins/Runtime/ArchVisCharacter/ArchVisCharacter.uplugin",
-			"Descriptor": 
-			{
-				"FileVersion": 3,
-				"Version": 1,
-				"VersionName": "1.0",
-				"FriendlyName": "ArchVis Character",
-				"Description": "A controllable character tuned for architectural applications",
-				"Category": "Gameplay",
-				"CreatedBy": "Epic Games, Inc.",
-				"CreatedByURL": "http://epicgames.com",
-				"DocsURL": "",
-				"MarketplaceURL": "",
-				"SupportURL": "",
-				"EnabledByDefault": true,
-				"CanContainContent": false,
-				"Modules": [
-					{
-						"Name": "ArchVisCharacter",
-						"Type": "Runtime",
-						"LoadingPhase": "Default"
-					}
-				]
-			}
-		},
-		{
 			"File": "../../../Engine/Plugins/Runtime/AudioCapture/AudioCapture.uplugin",
 			"Descriptor": 
 			{
@@ -1228,58 +1049,6 @@
 			}
 		},
 		{
-			"File": "../../../Engine/Plugins/Runtime/ExampleDeviceProfileSelector/ExampleDeviceProfileSelector.uplugin",
-			"Descriptor": 
-			{
-				"FileVersion": 3,
-				"Version": 1,
-				"VersionName": "1.0",
-				"FriendlyName": "Example Device Profile Selector",
-				"Description": "Example Device Profile Selector used show selection of device profiles on hardware",
-				"Category": "Device Profile Selectors",
-				"CreatedBy": "Epic Games, Inc.",
-				"CreatedByURL": "http://epicgames.com",
-				"DocsURL": "",
-				"MarketplaceURL": "",
-				"SupportURL": "",
-				"EnabledByDefault": true,
-				"CanContainContent": false,
-				"Modules": [
-					{
-						"Name": "ExampleDeviceProfileSelector",
-						"Type": "RuntimeNoCommandlet",
-						"LoadingPhase": "PostConfigInit"
-					}
-				]
-			}
-		},
-		{
-			"File": "../../../Engine/Plugins/Runtime/LocationServicesBPLibrary/LocationServicesBPLibrary.uplugin",
-			"Descriptor": 
-			{
-				"FileVersion": 3,
-				"Version": 1,
-				"VersionName": "1.0",
-				"FriendlyName": "Mobile Location Services Blueprints Library",
-				"Description": "Common interface for blueprint access for location data from mobile devices",
-				"Category": "Blueprints",
-				"CreatedBy": "Epic Games, Inc.",
-				"CreatedByURL": "http://epicgames.com",
-				"DocsURL": "",
-				"MarketplaceURL": "",
-				"SupportURL": "",
-				"EnabledByDefault": true,
-				"CanContainContent": false,
-				"Modules": [
-					{
-						"Name": "LocationServicesBPLibrary",
-						"Type": "Runtime",
-						"LoadingPhase": "PreDefault"
-					}
-				]
-			}
-		},
-		{
 			"File": "../../../Engine/Plugins/Runtime/MobilePatchingUtils/MobilePatchingUtils.uplugin",
 			"Descriptor": 
 			{
@@ -1306,56 +1075,32 @@
 			}
 		},
 		{
-			"File": "../../../Engine/Plugins/Runtime/Oculus/OculusVR/OculusVR.uplugin",
+			"File": "../../../Engine/Plugins/Runtime/PhysXVehicles/PhysXVehicles.uplugin",
 			"Descriptor": 
 			{
 				"FileVersion": 3,
 				"Version": 1,
-				"VersionName": "1.27.0",
-				"FriendlyName": "Oculus VR",
-				"Description": "Support for Oculus headsets and controllers",
-				"Category": "Virtual Reality",
-				"CreatedBy": "Oculus",
-				"CreatedByURL": "https://www.oculus.com/",
-				"DocsURL": "https://developer.oculus.com/documentation/unreal/latest/concepts/unreal-engine/",
+				"VersionName": "1.0",
+				"FriendlyName": "PhysX Vehicles",
+				"Description": "PhysX Vehicle Integration",
+				"Category": "Physics",
+				"CreatedBy": "Epic Games, Inc.",
+				"CreatedByURL": "http://epicgames.com",
+				"DocsURL": "",
 				"MarketplaceURL": "",
-				"SupportURL": "https://forums.oculusvr.com/developer/categories/unreal",
+				"SupportURL": "",
 				"EnabledByDefault": true,
-				"CanContainContent": true,
+				"CanContainContent": false,
 				"Modules": [
 					{
-						"Name": "OculusHMD",
+						"Name": "PhysXVehicles",
 						"Type": "Runtime",
-						"LoadingPhase": "PostConfigInit",
-						"WhitelistPlatforms": [
-							"Win64",
-							"Win32",
-							"Android"
-						]
+						"LoadingPhase": "PreDefault"
 					},
 					{
-						"Name": "OculusInput",
-						"Type": "Runtime",
-						"LoadingPhase": "Default",
-						"WhitelistPlatforms": [
-							"Win64",
-							"Win32",
-							"Android"
-						]
-					},
-					{
-						"Name": "OculusEditor",
-						"Type": "Editor",
-						"LoadingPhase": "PreDefault",
-						"WhitelistPlatforms": [
-							"Win64"
-						]
-					}
-				],
-				"Plugins": [
-					{
-						"Name": "ProceduralMeshComponent",
-						"Enabled": true
+						"Name": "PhysXVehiclesEditor",
+						"Type": "Developer",
+						"LoadingPhase": "PreDefault"
 					}
 				]
 			}
@@ -1395,37 +1140,6 @@
 			}
 		},
 		{
-			"File": "../../../Engine/Plugins/Runtime/PhysXVehicles/PhysXVehicles.uplugin",
-			"Descriptor": 
-			{
-				"FileVersion": 3,
-				"Version": 1,
-				"VersionName": "1.0",
-				"FriendlyName": "PhysX Vehicles",
-				"Description": "PhysX Vehicle Integration",
-				"Category": "Physics",
-				"CreatedBy": "Epic Games, Inc.",
-				"CreatedByURL": "http://epicgames.com",
-				"DocsURL": "",
-				"MarketplaceURL": "",
-				"SupportURL": "",
-				"EnabledByDefault": true,
-				"CanContainContent": false,
-				"Modules": [
-					{
-						"Name": "PhysXVehicles",
-						"Type": "Runtime",
-						"LoadingPhase": "PreDefault"
-					},
-					{
-						"Name": "PhysXVehiclesEditor",
-						"Type": "Developer",
-						"LoadingPhase": "PreDefault"
-					}
-				]
-			}
-		},
-		{
 			"File": "../../../Engine/Plugins/Runtime/RuntimePhysXCooking/RuntimePhysXCooking.uplugin",
 			"Descriptor": 
 			{
@@ -1447,55 +1161,6 @@
 						"Name": "RuntimePhysXCooking",
 						"Type": "Runtime",
 						"LoadingPhase": "PreDefault"
-					}
-				]
-			}
-		},
-		{
-			"File": "../../../Engine/Plugins/Runtime/Steam/SteamVR/SteamVR.uplugin",
-			"Descriptor": 
-			{
-				"FileVersion": 3,
-				"Version": 1,
-				"VersionName": "1.0",
-				"FriendlyName": "SteamVR",
-				"Description": "Support for the SteamVR API",
-				"Category": "Virtual Reality",
-				"CreatedBy": "Epic Games, Inc.",
-				"CreatedByURL": "http://epicgames.com",
-				"DocsURL": "",
-				"MarketplaceURL": "",
-				"SupportURL": "",
-				"EnabledByDefault": true,
-				"CanContainContent": true,
-				"Modules": [
-					{
-						"Name": "SteamVR",
-						"Type": "Runtime",
-						"LoadingPhase": "PostConfigInit",
-						"WhitelistPlatforms": [
-							"Win64",
-							"Win32",
-							"Linux",
-							"Mac"
-						]
-					},
-					{
-						"Name": "SteamVRController",
-						"Type": "Runtime",
-						"LoadingPhase": "Default",
-						"WhitelistPlatforms": [
-							"Win64",
-							"Win32",
-							"Linux",
-							"Mac"
-						]
-					}
-				],
-				"Plugins": [
-					{
-						"Name": "ProceduralMeshComponent",
-						"Enabled": true
 					}
 				]
 			}

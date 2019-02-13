@@ -6,6 +6,14 @@
 #include "GameFramework/Character.h"
 #include "MyCharacter.generated.h"
 
+
+UENUM()
+enum EHandType
+{
+	RightHand,
+	LeftHand
+};
+
 class AMyEnemy;
 struct FVector;
 //struct FDataTime;
@@ -29,8 +37,6 @@ class GFF_API AMyCharacter : public ACharacter
 	AMyEnemy* TargetEnemy;
 	
 	float LastTime;
-	float CurrentCoolTime;
-	float CoolTime;
 
 	//¶‘¶‚µ‚Ä‚¢‚é“G‚Ì’†‚ÅƒvƒŒƒCƒ„[‚Éˆê”Ô‹ß‚¢“G‚ğ’T‚·
 	void SearchEnemy();
@@ -73,13 +79,16 @@ protected:
 		float defaultWalkSpeed;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		float enemyDistance;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float ComboResetTime;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		int enemyNum;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		int ComboAttack;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		int Vitality;
+	UPROPERTY(EditInstanceOnly, BlueprintReadWrite)
+		int ComboAttackCount;//ƒRƒ“ƒ{UŒ‚¬Œ÷”Ši”[•Ï”
+
 
 public:	
 
@@ -116,6 +125,9 @@ public:
 	bool GetIsCombatRange();
 
 	UFUNCTION(BlueprintCallable, Category = "MyBPLibrary")
-	void PunchCollisionProceed(FString _LorRHandName);
+	void SetPunchCollisionEnabled(EHandType HandType, bool IsCollision);
+
+	UFUNCTION(BlueprintCallable, Category = "MyBPLibrary")
+	void StartComboTime();
 
 };

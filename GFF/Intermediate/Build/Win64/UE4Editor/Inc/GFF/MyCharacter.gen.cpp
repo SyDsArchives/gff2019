@@ -13,10 +13,11 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 // Cross Module References
+	GFF_API UEnum* Z_Construct_UEnum_GFF_EHandType();
+	UPackage* Z_Construct_UPackage__Script_GFF();
 	GFF_API UClass* Z_Construct_UClass_AMyCharacter_NoRegister();
 	GFF_API UClass* Z_Construct_UClass_AMyCharacter();
 	ENGINE_API UClass* Z_Construct_UClass_ACharacter();
-	UPackage* Z_Construct_UPackage__Script_GFF();
 	GFF_API UFunction* Z_Construct_UFunction_AMyCharacter_CapsuleBeginOverlap();
 	ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FHitResult();
 	ENGINE_API UClass* Z_Construct_UClass_UPrimitiveComponent_NoRegister();
@@ -27,13 +28,60 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 	GFF_API UFunction* Z_Construct_UFunction_AMyCharacter_OnTestOverlapBegin();
 	GFF_API UFunction* Z_Construct_UFunction_AMyCharacter_OnTestOverlapEnd();
 	GFF_API UFunction* Z_Construct_UFunction_AMyCharacter_PunchBeginOverlap();
-	GFF_API UFunction* Z_Construct_UFunction_AMyCharacter_PunchCollisionProceed();
 	GFF_API UFunction* Z_Construct_UFunction_AMyCharacter_PunchEndOverlap();
 	GFF_API UFunction* Z_Construct_UFunction_AMyCharacter_SetIsAttack();
+	GFF_API UFunction* Z_Construct_UFunction_AMyCharacter_SetPunchCollisionEnabled();
+	GFF_API UFunction* Z_Construct_UFunction_AMyCharacter_StartComboTime();
 	ENGINE_API UClass* Z_Construct_UClass_UBoxComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_USpringArmComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UCameraComponent_NoRegister();
 // End Cross Module References
+	static UEnum* EHandType_StaticEnum()
+	{
+		static UEnum* Singleton = nullptr;
+		if (!Singleton)
+		{
+			Singleton = GetStaticEnum(Z_Construct_UEnum_GFF_EHandType, Z_Construct_UPackage__Script_GFF(), TEXT("EHandType"));
+		}
+		return Singleton;
+	}
+	static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_EHandType(EHandType_StaticEnum, TEXT("/Script/GFF"), TEXT("EHandType"), false, nullptr, nullptr);
+	uint32 Get_Z_Construct_UEnum_GFF_EHandType_CRC() { return 148853464U; }
+	UEnum* Z_Construct_UEnum_GFF_EHandType()
+	{
+#if WITH_HOT_RELOAD
+		UPackage* Outer = Z_Construct_UPackage__Script_GFF();
+		static UEnum* ReturnEnum = FindExistingEnumIfHotReloadOrDynamic(Outer, TEXT("EHandType"), 0, Get_Z_Construct_UEnum_GFF_EHandType_CRC(), false);
+#else
+		static UEnum* ReturnEnum = nullptr;
+#endif // WITH_HOT_RELOAD
+		if (!ReturnEnum)
+		{
+			static const UE4CodeGen_Private::FEnumeratorParam Enumerators[] = {
+				{ "RightHand", (int64)RightHand },
+				{ "LeftHand", (int64)LeftHand },
+			};
+#if WITH_METADATA
+			const UE4CodeGen_Private::FMetaDataPairParam Enum_MetaDataParams[] = {
+				{ "ModuleRelativePath", "MyCharacter.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FEnumParams EnumParams = {
+				(UObject*(*)())Z_Construct_UPackage__Script_GFF,
+				UE4CodeGen_Private::EDynamicType::NotDynamic,
+				"EHandType",
+				RF_Public|RF_Transient|RF_MarkAsNative,
+				nullptr,
+				(uint8)UEnum::ECppForm::Regular,
+				"EHandType",
+				Enumerators,
+				ARRAY_COUNT(Enumerators),
+				METADATA_PARAMS(Enum_MetaDataParams, ARRAY_COUNT(Enum_MetaDataParams))
+			};
+			UE4CodeGen_Private::ConstructUEnum(ReturnEnum, EnumParams);
+		}
+		return ReturnEnum;
+	}
 	void AMyCharacter::StaticRegisterNativesAMyCharacter()
 	{
 		UClass* Class = AMyCharacter::StaticClass();
@@ -45,9 +93,10 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 			{ "OnTestOverlapBegin", &AMyCharacter::execOnTestOverlapBegin },
 			{ "OnTestOverlapEnd", &AMyCharacter::execOnTestOverlapEnd },
 			{ "PunchBeginOverlap", &AMyCharacter::execPunchBeginOverlap },
-			{ "PunchCollisionProceed", &AMyCharacter::execPunchCollisionProceed },
 			{ "PunchEndOverlap", &AMyCharacter::execPunchEndOverlap },
 			{ "SetIsAttack", &AMyCharacter::execSetIsAttack },
+			{ "SetPunchCollisionEnabled", &AMyCharacter::execSetPunchCollisionEnabled },
+			{ "StartComboTime", &AMyCharacter::execStartComboTime },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, ARRAY_COUNT(Funcs));
 	}
@@ -447,39 +496,6 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 		}
 		return ReturnFunction;
 	}
-	struct Z_Construct_UFunction_AMyCharacter_PunchCollisionProceed_Statics
-	{
-		struct MyCharacter_eventPunchCollisionProceed_Parms
-		{
-			FString _LorRHandName;
-		};
-		static const UE4CodeGen_Private::FStrPropertyParams NewProp__LorRHandName;
-		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
-#if WITH_METADATA
-		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
-#endif
-		static const UE4CodeGen_Private::FFunctionParams FuncParams;
-	};
-	const UE4CodeGen_Private::FStrPropertyParams Z_Construct_UFunction_AMyCharacter_PunchCollisionProceed_Statics::NewProp__LorRHandName = { UE4CodeGen_Private::EPropertyClass::Str, "_LorRHandName", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0010000000000080, 1, nullptr, STRUCT_OFFSET(MyCharacter_eventPunchCollisionProceed_Parms, _LorRHandName), METADATA_PARAMS(nullptr, 0) };
-	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AMyCharacter_PunchCollisionProceed_Statics::PropPointers[] = {
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AMyCharacter_PunchCollisionProceed_Statics::NewProp__LorRHandName,
-	};
-#if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AMyCharacter_PunchCollisionProceed_Statics::Function_MetaDataParams[] = {
-		{ "Category", "MyBPLibrary" },
-		{ "ModuleRelativePath", "MyCharacter.h" },
-	};
-#endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AMyCharacter_PunchCollisionProceed_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AMyCharacter, "PunchCollisionProceed", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x04020401, sizeof(MyCharacter_eventPunchCollisionProceed_Parms), Z_Construct_UFunction_AMyCharacter_PunchCollisionProceed_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_AMyCharacter_PunchCollisionProceed_Statics::PropPointers), 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AMyCharacter_PunchCollisionProceed_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_AMyCharacter_PunchCollisionProceed_Statics::Function_MetaDataParams)) };
-	UFunction* Z_Construct_UFunction_AMyCharacter_PunchCollisionProceed()
-	{
-		static UFunction* ReturnFunction = nullptr;
-		if (!ReturnFunction)
-		{
-			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AMyCharacter_PunchCollisionProceed_Statics::FuncParams);
-		}
-		return ReturnFunction;
-	}
 	struct Z_Construct_UFunction_AMyCharacter_PunchEndOverlap_Statics
 	{
 		struct MyCharacter_eventPunchEndOverlap_Parms
@@ -579,6 +595,71 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 		}
 		return ReturnFunction;
 	}
+	struct Z_Construct_UFunction_AMyCharacter_SetPunchCollisionEnabled_Statics
+	{
+		struct MyCharacter_eventSetPunchCollisionEnabled_Parms
+		{
+			TEnumAsByte<EHandType> HandType;
+			bool IsCollision;
+		};
+		static void NewProp_IsCollision_SetBit(void* Obj);
+		static const UE4CodeGen_Private::FBoolPropertyParams NewProp_IsCollision;
+		static const UE4CodeGen_Private::FBytePropertyParams NewProp_HandType;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+	void Z_Construct_UFunction_AMyCharacter_SetPunchCollisionEnabled_Statics::NewProp_IsCollision_SetBit(void* Obj)
+	{
+		((MyCharacter_eventSetPunchCollisionEnabled_Parms*)Obj)->IsCollision = 1;
+	}
+	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_AMyCharacter_SetPunchCollisionEnabled_Statics::NewProp_IsCollision = { UE4CodeGen_Private::EPropertyClass::Bool, "IsCollision", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0010000000000080, 1, nullptr, sizeof(bool), UE4CodeGen_Private::ENativeBool::Native, sizeof(MyCharacter_eventSetPunchCollisionEnabled_Parms), &Z_Construct_UFunction_AMyCharacter_SetPunchCollisionEnabled_Statics::NewProp_IsCollision_SetBit, METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FBytePropertyParams Z_Construct_UFunction_AMyCharacter_SetPunchCollisionEnabled_Statics::NewProp_HandType = { UE4CodeGen_Private::EPropertyClass::Byte, "HandType", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0010000000000080, 1, nullptr, STRUCT_OFFSET(MyCharacter_eventSetPunchCollisionEnabled_Parms, HandType), Z_Construct_UEnum_GFF_EHandType, METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AMyCharacter_SetPunchCollisionEnabled_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AMyCharacter_SetPunchCollisionEnabled_Statics::NewProp_IsCollision,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AMyCharacter_SetPunchCollisionEnabled_Statics::NewProp_HandType,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AMyCharacter_SetPunchCollisionEnabled_Statics::Function_MetaDataParams[] = {
+		{ "Category", "MyBPLibrary" },
+		{ "ModuleRelativePath", "MyCharacter.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AMyCharacter_SetPunchCollisionEnabled_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AMyCharacter, "SetPunchCollisionEnabled", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x04020401, sizeof(MyCharacter_eventSetPunchCollisionEnabled_Parms), Z_Construct_UFunction_AMyCharacter_SetPunchCollisionEnabled_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_AMyCharacter_SetPunchCollisionEnabled_Statics::PropPointers), 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AMyCharacter_SetPunchCollisionEnabled_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_AMyCharacter_SetPunchCollisionEnabled_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_AMyCharacter_SetPunchCollisionEnabled()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AMyCharacter_SetPunchCollisionEnabled_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_AMyCharacter_StartComboTime_Statics
+	{
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AMyCharacter_StartComboTime_Statics::Function_MetaDataParams[] = {
+		{ "Category", "MyBPLibrary" },
+		{ "ModuleRelativePath", "MyCharacter.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AMyCharacter_StartComboTime_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AMyCharacter, "StartComboTime", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x04020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AMyCharacter_StartComboTime_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_AMyCharacter_StartComboTime_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_AMyCharacter_StartComboTime()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AMyCharacter_StartComboTime_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
 	UClass* Z_Construct_UClass_AMyCharacter_NoRegister()
 	{
 		return AMyCharacter::StaticClass();
@@ -591,17 +672,21 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 		static const UE4CodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
 #if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_ComboAttackCount_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_ComboAttackCount;
+#if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Vitality_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_Vitality;
 #if WITH_METADATA
-		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_ComboAttack_MetaData[];
-#endif
-		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_ComboAttack;
-#if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_enemyNum_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_enemyNum;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_ComboResetTime_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_ComboResetTime;
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_enemyDistance_MetaData[];
 #endif
@@ -670,9 +755,10 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 		{ &Z_Construct_UFunction_AMyCharacter_OnTestOverlapBegin, "OnTestOverlapBegin" }, // 2947200575
 		{ &Z_Construct_UFunction_AMyCharacter_OnTestOverlapEnd, "OnTestOverlapEnd" }, // 2757193145
 		{ &Z_Construct_UFunction_AMyCharacter_PunchBeginOverlap, "PunchBeginOverlap" }, // 378750659
-		{ &Z_Construct_UFunction_AMyCharacter_PunchCollisionProceed, "PunchCollisionProceed" }, // 293480879
 		{ &Z_Construct_UFunction_AMyCharacter_PunchEndOverlap, "PunchEndOverlap" }, // 928284638
 		{ &Z_Construct_UFunction_AMyCharacter_SetIsAttack, "SetIsAttack" }, // 3018092005
+		{ &Z_Construct_UFunction_AMyCharacter_SetPunchCollisionEnabled, "SetPunchCollisionEnabled" }, // 1859072455
+		{ &Z_Construct_UFunction_AMyCharacter_StartComboTime, "StartComboTime" }, // 755893217
 	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMyCharacter_Statics::Class_MetaDataParams[] = {
@@ -683,6 +769,13 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 	};
 #endif
 #if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMyCharacter_Statics::NewProp_ComboAttackCount_MetaData[] = {
+		{ "Category", "MyCharacter" },
+		{ "ModuleRelativePath", "MyCharacter.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UClass_AMyCharacter_Statics::NewProp_ComboAttackCount = { UE4CodeGen_Private::EPropertyClass::Int, "ComboAttackCount", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0020080000000805, 1, nullptr, STRUCT_OFFSET(AMyCharacter, ComboAttackCount), METADATA_PARAMS(Z_Construct_UClass_AMyCharacter_Statics::NewProp_ComboAttackCount_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMyCharacter_Statics::NewProp_ComboAttackCount_MetaData)) };
+#if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMyCharacter_Statics::NewProp_Vitality_MetaData[] = {
 		{ "Category", "MyCharacter" },
 		{ "ModuleRelativePath", "MyCharacter.h" },
@@ -690,19 +783,19 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 #endif
 	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UClass_AMyCharacter_Statics::NewProp_Vitality = { UE4CodeGen_Private::EPropertyClass::Int, "Vitality", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0020080000000005, 1, nullptr, STRUCT_OFFSET(AMyCharacter, Vitality), METADATA_PARAMS(Z_Construct_UClass_AMyCharacter_Statics::NewProp_Vitality_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMyCharacter_Statics::NewProp_Vitality_MetaData)) };
 #if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMyCharacter_Statics::NewProp_ComboAttack_MetaData[] = {
-		{ "Category", "MyCharacter" },
-		{ "ModuleRelativePath", "MyCharacter.h" },
-	};
-#endif
-	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UClass_AMyCharacter_Statics::NewProp_ComboAttack = { UE4CodeGen_Private::EPropertyClass::Int, "ComboAttack", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0020080000000005, 1, nullptr, STRUCT_OFFSET(AMyCharacter, ComboAttack), METADATA_PARAMS(Z_Construct_UClass_AMyCharacter_Statics::NewProp_ComboAttack_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMyCharacter_Statics::NewProp_ComboAttack_MetaData)) };
-#if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMyCharacter_Statics::NewProp_enemyNum_MetaData[] = {
 		{ "Category", "MyCharacter" },
 		{ "ModuleRelativePath", "MyCharacter.h" },
 	};
 #endif
 	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UClass_AMyCharacter_Statics::NewProp_enemyNum = { UE4CodeGen_Private::EPropertyClass::Int, "enemyNum", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0020080000000005, 1, nullptr, STRUCT_OFFSET(AMyCharacter, enemyNum), METADATA_PARAMS(Z_Construct_UClass_AMyCharacter_Statics::NewProp_enemyNum_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMyCharacter_Statics::NewProp_enemyNum_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMyCharacter_Statics::NewProp_ComboResetTime_MetaData[] = {
+		{ "Category", "MyCharacter" },
+		{ "ModuleRelativePath", "MyCharacter.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AMyCharacter_Statics::NewProp_ComboResetTime = { UE4CodeGen_Private::EPropertyClass::Float, "ComboResetTime", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x0020080000000005, 1, nullptr, STRUCT_OFFSET(AMyCharacter, ComboResetTime), METADATA_PARAMS(Z_Construct_UClass_AMyCharacter_Statics::NewProp_ComboResetTime_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMyCharacter_Statics::NewProp_ComboResetTime_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMyCharacter_Statics::NewProp_enemyDistance_MetaData[] = {
 		{ "Category", "MyCharacter" },
@@ -818,9 +911,10 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMyCharacter_Statics::NewProp_SideViewCameraComponent = { UE4CodeGen_Private::EPropertyClass::Object, "SideViewCameraComponent", RF_Public|RF_Transient|RF_MarkAsNative, (EPropertyFlags)0x00400000000a001d, 1, nullptr, STRUCT_OFFSET(AMyCharacter, SideViewCameraComponent), Z_Construct_UClass_UCameraComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AMyCharacter_Statics::NewProp_SideViewCameraComponent_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMyCharacter_Statics::NewProp_SideViewCameraComponent_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AMyCharacter_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyCharacter_Statics::NewProp_ComboAttackCount,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyCharacter_Statics::NewProp_Vitality,
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyCharacter_Statics::NewProp_ComboAttack,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyCharacter_Statics::NewProp_enemyNum,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyCharacter_Statics::NewProp_ComboResetTime,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyCharacter_Statics::NewProp_enemyDistance,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyCharacter_Statics::NewProp_defaultWalkSpeed,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyCharacter_Statics::NewProp_MaxWalkSpeed,
@@ -857,7 +951,7 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AMyCharacter, 862831895);
+	IMPLEMENT_CLASS(AMyCharacter, 2922099918);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_AMyCharacter(Z_Construct_UClass_AMyCharacter, &AMyCharacter::StaticClass, TEXT("/Script/GFF"), TEXT("AMyCharacter"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(AMyCharacter);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

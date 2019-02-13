@@ -1,129 +1,13 @@
 ﻿  Using 'git status' to determine working set for adaptive non-unity build (D:\UnrealEngine\gff2019).
-  Creating makefile for GFFEditor (no existing makefile)
+  Creating makefile for hot reloading GFFEditor (source directory changed)
+  Compiling game modules for hot reload
   Using Visual Studio 2017 14.16.27023 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023) and Windows 10.0.16299.0 SDK (C:\Program Files (x86)\Windows Kits\10).
-  Parsing headers for GFFEditor
-    Running UnrealHeaderTool "D:\UnrealEngine\gff2019\GFF\GFF.uproject" "D:\UnrealEngine\gff2019\GFF\Intermediate\Build\Win64\GFFEditor\Development\GFFEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -installed
-  Reflection code generated for GFFEditor in 8.7929467 seconds
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-1167.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-1167.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-1349.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-1349.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-1437.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-1437.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-1651.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-1651.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-2141.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-2141.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-2539.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-2539.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-2571.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-2571.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-2775.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-2775.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-2779.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-2779.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-3068.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-3068.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-3092.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-3092.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-3096.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-3096.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-3256.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-3256.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-3449.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-3449.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-3536.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-3536.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-3744.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-3744.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-3957.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-3957.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-4243.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-4243.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-4355.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-4355.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-4467.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-4529.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-4529.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-4581.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-4581.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-4663.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-4711.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-4711.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-4746.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-4746.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-4747.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-4747.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-5426.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-5426.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-5454.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-5454.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-5528.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-5528.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-5608.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-5608.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-5971.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-5971.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-6149.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-6149.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-6361.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-6361.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-6425.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-6425.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-6439.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-6719.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-6719.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-6825.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-6825.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-7304.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-7304.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-7308.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-7308.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-7464.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-7464.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-7791.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-7791.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-7850.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-7850.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-7894.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-7894.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-7937.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-7937.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-8353.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-8353.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-851.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-851.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-8601.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-8733.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-8733.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-8801.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-8801.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-9076.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-9076.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-9080.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-9080.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-9146.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-9146.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-9268.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-9306.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-9306.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-9378.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-9378.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-9468.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-9468.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-9563.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-9563.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-9586.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-9834.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-9834.pdb".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-9967.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-9981.dll".
-  Deleting old hot reload file: "D:\UnrealEngine\gff2019\GFF\Binaries\Win64\UE4Editor-GFF-9981.pdb".
   Building 3 actions with 8 processes...
-    [1/3] GFF.init.gen.cpp
-    [2/3] UE4Editor-GFF.lib
-       ライブラリ D:\UnrealEngine\gff2019\GFF\Intermediate\Build\Win64\UE4Editor\Development\GFF\UE4Editor-GFF.lib とオブジェクト D:\UnrealEngine\gff2019\GFF\Intermediate\Build\Win64\UE4Editor\Development\GFF\UE4Editor-GFF.exp を作成中
-    [3/3] UE4Editor-GFF.dll
-       ライブラリ D:\UnrealEngine\gff2019\GFF\Intermediate\Build\Win64\UE4Editor\Development\GFF\UE4Editor-GFF.suppressed.lib とオブジェクト D:\UnrealEngine\gff2019\GFF\Intermediate\Build\Win64\UE4Editor\Development\GFF\UE4Editor-GFF.suppressed.exp を作成中
+    [1/3] MyCharacter.cpp
+d:\unrealengine\gff2019\gff\source\gff\mycharacter.cpp(358): warning C4701: 初期化されていない可能性のあるローカル変数 'vecBetweenDistance' が使用されます
+    [2/3] UE4Editor-GFF-1533.lib
+       ライブラリ D:\UnrealEngine\gff2019\GFF\Intermediate\Build\Win64\UE4Editor\Development\GFF\UE4Editor-GFF-1533.lib とオブジェクト D:\UnrealEngine\gff2019\GFF\Intermediate\Build\Win64\UE4Editor\Development\GFF\UE4Editor-GFF-1533.exp を作成中
+    [3/3] UE4Editor-GFF-1533.dll
+       ライブラリ D:\UnrealEngine\gff2019\GFF\Intermediate\Build\Win64\UE4Editor\Development\GFF\UE4Editor-GFF-1533.suppressed.lib とオブジェクト D:\UnrealEngine\gff2019\GFF\Intermediate\Build\Win64\UE4Editor\Development\GFF\UE4Editor-GFF-1533.suppressed.exp を作成中
   Deploying GFFEditor Win64 Development...
-  Total build time: 18.31 seconds (Parallel executor: 1.52 seconds)
+  Total build time: 275.44 seconds (Parallel executor: 270.59 seconds)
